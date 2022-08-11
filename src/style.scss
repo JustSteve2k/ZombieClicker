@@ -1,0 +1,197 @@
+body {
+  margin: 0;
+  background-color: black;
+  font-family: Roboto, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+p {
+  margin: 1rem;
+}
+
+button {
+  width: 30%;
+  height: 2rem;
+  background-color: rgb(38, 161, 4);
+  color: white;
+  margin: 0.5rem 0.5rem;
+  box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.4);
+  border: 0;
+  border-radius: 6px;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 80vh;
+  background-color: black;
+  color: white;
+  margin: 10vh 5%;
+}
+
+/* Main four boxes */
+#left {
+  display: block;
+}
+
+#middle {
+  display: block;
+}
+
+#right {
+  display: block;
+}
+
+#achievements {
+  display: none;
+}
+
+.box {
+  width: 25%;
+  height: 75vh;
+  background-color: rgb(80, 90, 70, 0.2);
+  box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin: 0rem 2.5%;
+}
+
+.upperButtonArea {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem auto;
+  border: 1px solid white;
+}
+
+.middleButtonArea {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: flex-start;
+  margin: 1rem auto;
+  border: 1px solid white;
+
+  button {
+    width: 5rem;
+  }
+}
+
+.lowerbuttons {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid white;
+}
+
+.testbutton {
+  margin: 0 0.5rem;
+}
+
+.unitCounts {
+  height: 35%;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid white;
+  background-color: lightcoral;
+  border-radius: 12px;
+}
+
+.units {
+  margin: 1rem auto;
+  height: 20%;
+  border: 1px solid white;
+  background-color: lightgrey;
+  visibility: hidden;
+}
+.infantrymen {
+  height: 20%;
+  border: 1px solid white;
+  background-color: blue;
+  visibility: hidden;
+}
+.machineguns {
+  height: 20%;
+  border: 1px solid white;
+  background-color: blue;
+  visibility: hidden;
+}
+.turrets {
+  height: 20%;
+  border: 1px solid white;
+  background-color: blue;
+  visibility: hidden;
+}
+
+#right {
+  margin: 0rem 2.5%;
+}
+
+.autoClicksHeader {
+  margin-top: 3rem;
+}
+
+.modalBackground {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  height: 0px;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+
+.modalContent {
+  position: fixed;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 2;
+  height: 0px;
+  width: 20vw;
+  background-color: rgb(80, 90, 70);
+  top: 30%;
+  left: 40%;
+  transition: 0.5s;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.modalClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#tank {
+  width: 5rem;
+  height: 5rem;
+  margin: 40% auto;
+  background-color: rgb(41, 249, 8);
+  box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.2);
+}
+
+#tank:hover {
+  background-color: rgb(38, 161, 4);
+}
+
+#tank:active {
+  //transform: rotate(45deg);
+  transform: scale(1.2);
+  border: 1px solid red;
+  transition: 0.1s;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div id="left" class="box">
+        <h2>Clicker</h2>
+        <div id="tank"></div>
+      </div>
+      <div id="middle" class="box">
+        <h2>Purchase Units</h2>
+        <div class="upperButtonArea">
+          <button class="realbutton" onclick="PurchaseUnit('infantrymen')">Infantrymen - $<span class="infantrymenCost">10</span></button>
+          <button class="realbutton" onclick="PurchaseUnit('machineguns')">Machineguns - $<span class="machinegunsCost">20</span></button>
+          <button class="realbutton" onclick="PurchaseUnit('turrets')">Turrets - $<span class="turretsCost">40</span></button>
+          <button class="realbutton" onclick="PurchaseUnit('cannons')">Cannons - $<span class="cannonsCost">80</span></button>
+          <button class="realbutton" onclick="PurchaseUnit('gunships')">Gunships - $<span class="gunshipsCost">160</span></button>
+          <button class="realbutton" onclick="PurchaseUnit('battleships')">Battleships - $<span class="battleshipsCost">320</span></button>
+          <button class="realbutton" onclick="PurchaseUnit('sateliteguns')">Sateliteguns - $<span class="satelitegunsCost">640</span></button>
+          <button class="realbutton" onclick="PurchaseUnit('spaceships')">Spaceships - $<span class="spaceshipsCost">1280</span></button>
+        </div>
+        <h2>Buffs</h2>
+        <div class="middleButtonArea">
+          <button class="buffButton" onclick="BuyBuff(this,20)">Buff 1</button>
+          <button class="buffButton" onclick="ShowModal('hmm')">Buff 2</button>
+          <button class="buffButton" onclick="ShowModal('it works!')">Buff 3</button>
+          <button class="buffButton" onclick="ShowModal('Buff 4')">Buff 4</button>
+          <button class="buffButton" onclick="NotReady()">Buff 5</button>
+          <button class="buffButton" onclick="NotReady()">Buff 6</button>
+          <button class="buffButton" onclick="NotReady()">Buff 7</button>
+          <button class="buffButton" onclick="NotReady()">Buff 8</button>
+          <button class="buffButton" onclick="NotReady()">Buff 9</button>
+          <button class="buffButton" onclick="NotReady()">Buff 10</button>
+          <button class="buffButton" onclick="NotReady()">Buff 11</button>
+          <button class="buffButton" onclick="NotReady()">Buff 12</button>
+          <button class="buffButton" onclick="NotReady()">Buff 13</button>
+          <button class="buffButton" onclick="NotReady()">Buff 14</button>
+          <button class="buffButton" onclick="NotReady()">Buff 15</button>
+          <button class="buffButton" onclick="NotReady()">Buff 16</button>
+        </div>
+        <h2>Dev Money</h2>
+        <div class="lowerbuttons">
+          <button class="testbutton" onclick="AddMoney(160)">Add $160</button>
+          <button class="testbutton" onclick="AddMoney(320)">Add $320</button>
+          <button class="testbutton" onclick="AddMoney(640)">Add $640</button>
+        </div>
+      </div>
+      <div id="right" class="box">
+        <h2>Currency</h2>
+        <h3>$ <span id="currency">0</span></h3>
+        <h2 class="autoClicksHeader">AutoClicks</h2>
+        <div class="unitCounts">
+          <p>
+            Total Clicks - <span id="clicks">0</span><br />
+
+            Auto Clicks - <span id="autoClicks">0</span> per second
+          </p>
+          <p>
+            Infantrymen - <span id="infantrymen">0</span> <br />
+            Machineguns - <span id="machineguns">0</span> <br />
+            Turrets - <span id="turrets">0</span> <br />
+            Cannon - <span id="cannons">0</span> <br />
+            Gunships - <span id="gunships">0</span> <br />
+            Battleships - <span id="battleships">0</span> <br />
+            Sateliteguns - <span id="sateliteguns">0</span> <br />
+            Spaceships - <span id="spaceships">0</span> <br />
+          </p>
+        </div>
+
+        <div class="units">
+          <div class="infantrymen"></div>
+          <div class="machineguns"></div>
+          <div class="turrets"></div>
+        </div>
+      </div>
+      <div id="achievements" class="box">Achievements</div>
+      <div id="modalBackground" class="modalBackground">
+        <div style="height: 0px" id="modalContent" class="modalContent">
+          <p class="modalClose">X</p>
+          <p id="modText">test</p>
+          <br />
+          <button>yes</button>
+          <button onclick="ShowModal('close')">no</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./dist/script.js"></script>
+  </body>
+</html>
