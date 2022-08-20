@@ -1,6 +1,7 @@
 var interval = 0;
+var count = 0;
 // Event listeners
-document.getElementById("tank").addEventListener("click", UpdateCount);
+document.getElementById("tank").addEventListener("click", UpdateCountV2);
 // Placeholder function.
 function NotReady() {
     alert("This function is not implemented yet.");
@@ -13,6 +14,15 @@ function UpdateCount() {
     currency++;
     document.getElementById("currency").innerHTML = currency.toString();
     document.getElementById("clicks").innerHTML = clicks.toString();
+}
+// Used for manual clicks.  Should probably have a better name.
+function UpdateCountV2() {
+    var clicks = parseInt(document.getElementById("clicks").innerText);
+    var zombies = parseInt(document.getElementById("zombies").innerText);
+    zombies--;
+    clicks++;
+    document.getElementById("clicks").innerText = clicks.toString();
+    document.getElementById("zombies").innerText = zombies.toString();
 }
 // Used for adding money buttons.  Mostly for testing.
 function AddMoney(amount) {
@@ -107,7 +117,7 @@ function UpdateAutoclicker(autoclicks) {
     }, 1000);
 }
 function BuyBuff(elem, cost) {
-    var currency = document.getElementById("currency").innerText;
+    var currency = parseInt(document.getElementById("currency").innerText);
     // Check if enough currency.
     if (currency >= cost) {
         elem.style.backgroundColor = "red";
