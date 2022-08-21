@@ -22,8 +22,8 @@ function UpdateCountV2() {
     zombiesValue--;
     clicksValue++;
 
-    clicks.innerText = clicks.toString();
-    zombies.innerText = zombies.toString();
+    clicks.innerText = clicksValue.toString();
+    zombies.innerText = zombiesValue.toString();
   }
 }
 
@@ -60,33 +60,27 @@ function PurchaseUnit(unit: string) {
       amountOfUnits.innerText = amountOfUnitsValue.toString();
       currency.innerText = currency.toString();
 
+      let values = GetValues();
+
       // Sets multiple intervals.  Needs to be refactored.
       // Instead of having separte interval for each unit.  Need to combine the autoclicks and set interval based off that.
       // get how many of each unit we have*their point value.  Add them up then set one interval based off that.
-      let infantrymen = parseInt(document.getElementById("infantrymen")!.innerText);
-      let machineguns = parseInt(document.getElementById("machineguns")!.innerText);
-      let turrets = parseInt(document.getElementById("turrets")!.innerText);
-      let cannons = parseInt(document.getElementById("cannons")!.innerText);
-      let gunships = parseInt(document.getElementById("gunships")!.innerText);
-      let battleships = parseInt(document.getElementById("battleships")!.innerText);
-      let sateliteguns = parseInt(document.getElementById("sateliteguns")!.innerText);
-      let spaceships = parseInt(document.getElementById("spaceships")!.innerText);
 
       let autoclicksValue =
-        infantrymen * 1 + machineguns * 2 + turrets * 4 + cannons * 8 + gunships * 16 + battleships * 32 + sateliteguns * 64 + spaceships * 128; // Update with more units later.
+        values.infantrymen * 1 +
+        values.machineguns * 2 +
+        values.turrets * 4 +
+        values.cannons * 8 +
+        values.gunships * 16 +
+        values.battleships * 32 +
+        values.sateliteguns * 64 +
+        values.spaceships * 128; // Update with more units later.
 
       console.clear();
       console.log(`Unit cost - ${unitCost}`);
       console.log(`autoclicks - ${autoclicksValue}`);
-      console.log(`Infantrymen - ${infantrymen}`);
-      console.log(`machineguns - ${machineguns}`);
-      console.log(`turrets - ${turrets}`);
-      console.log(`cannons - ${cannons}`);
-      console.log(`gunships - ${gunships}`);
-      console.log(`battleships - ${battleships}`);
-      console.log(`sateliteguns - ${sateliteguns}`);
-      console.log(`spaceships - ${spaceships}`);
 
+      ConsoleOutputValues(values);
       UpdateAutoclicker(autoclicksValue);
       UpdateUnitCost(unit);
 
@@ -96,23 +90,39 @@ function PurchaseUnit(unit: string) {
 }
 
 function GetValues() {
-  const values = { infantrymen: 0, machineguns: 0, turrets: 0, cannons: 0, gunships: 0, sateliteguns: 0, spaceships: 0 };
+  const values = { infantrymen: 0, machineguns: 0, turrets: 0, cannons: 0, gunships: 0, battleships: 0, sateliteguns: 0, spaceships: 0 };
 
   values.infantrymen = parseInt(document.getElementById("infantrymen")!.innerText);
   values.machineguns = parseInt(document.getElementById("machineguns")!.innerText);
-  /*
   values.turrets = parseInt(document.getElementById("turrets")!.innerText);
   values.cannons = parseInt(document.getElementById("cannons")!.innerText);
-  let gunships = parseInt(document.getElementById("gunships")!.innerText);
-  let battleships = parseInt(document.getElementById("battleships")!.innerText);
-  let sateliteguns = parseInt(document.getElementById("sateliteguns")!.innerText);
-  let spaceships = parseInt(document.getElementById("spaceships")!.innerText);
-  */
+  values.gunships = parseInt(document.getElementById("gunships")!.innerText);
+  values.battleships = parseInt(document.getElementById("battleships")!.innerText);
+  values.sateliteguns = parseInt(document.getElementById("sateliteguns")!.innerText);
+  values.spaceships = parseInt(document.getElementById("spaceships")!.innerText);
+
   return values;
 }
 
+// Outputs values to the console.
+// TBD
+
+function ConsoleOutputValues(values: any): void {
+  console.clear();
+  //console.log(`Unit cost - ${unitCost}`);
+  //console.log(`autoclicks - ${autoclicksValue}`);
+  console.log(`Infantrymen - ${values.infantrymen}`);
+  console.log(`machineguns - ${values.machineguns}`);
+  console.log(`turrets - ${values.turrets}`);
+  console.log(`cannons - ${values.cannons}`);
+  console.log(`gunships - ${values.gunships}`);
+  console.log(`battleships - ${values.battleships}`);
+  console.log(`sateliteguns - ${values.sateliteguns}`);
+  console.log(`spaceships - ${values.spaceships}`);
+}
+
 // Order this needs to happen.  take cost from button.  Subtract from currency.  then calculate new cost and append button.
-function UpdateUnitCost(unit: string) {
+function UpdateUnitCost(unit: string): void {
   var unitCost = 0;
 
   let amountOfUnits = document.getElementById(unit);
