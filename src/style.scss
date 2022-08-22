@@ -4,13 +4,11 @@ body {
   font-family: Roboto, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2 {
-  text-align: center;
-}
-
+h2,
 h3 {
   text-align: center;
 }
+
 p {
   margin: 1rem;
 }
@@ -24,6 +22,11 @@ button {
   box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.4);
   border: 0;
   border-radius: 6px;
+
+  &:hover {
+    background-color: yellow;
+    color: black;
+  }
 }
 
 #main {
@@ -119,24 +122,6 @@ button {
   background-color: lightgrey;
   visibility: hidden;
 }
-.infantrymen {
-  height: 20%;
-  border: 1px solid white;
-  background-color: blue;
-  visibility: hidden;
-}
-.machineguns {
-  height: 20%;
-  border: 1px solid white;
-  background-color: blue;
-  visibility: hidden;
-}
-.turrets {
-  height: 20%;
-  border: 1px solid white;
-  background-color: blue;
-  visibility: hidden;
-}
 
 #right {
   margin: 0rem 2.5%;
@@ -146,6 +131,7 @@ button {
   margin-top: 3rem;
 }
 
+// Modal css
 .modalBackground {
   display: block;
   position: fixed;
@@ -177,21 +163,22 @@ button {
   right: 10px;
 }
 
+// Unit css
 #tank {
   width: 5rem;
   height: 5rem;
   margin: 40% auto;
   background-color: rgb(41, 249, 8);
   box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.2);
-}
 
-#tank:hover {
-  background-color: rgb(38, 161, 4);
-}
+  &:hover {
+    background-color: rgb(38, 161, 4);
+  }
 
-#tank:active {
-  //transform: rotate(45deg);
-  transform: scale(1.2);
-  border: 1px solid red;
-  transition: 0.1s;
+  &:active {
+    //transform: rotate(45deg);
+    transform: scale(1.2);
+    border: 1px solid red;
+    transition: 0.1s;
+  }
 }
