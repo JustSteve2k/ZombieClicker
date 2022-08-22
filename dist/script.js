@@ -1,8 +1,8 @@
 "use strict";
 var _a;
-var interval = 0;
+let interval = 0;
 let count = 0;
-let level = 0;
+let level = 1;
 // Event listeners
 (_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", UpdateCountV2);
 // Placeholder function.
@@ -20,6 +20,7 @@ function UpdateCountV2() {
         clicksValue++;
         clicks.innerText = clicksValue.toString();
         zombies.innerText = zombiesValue.toString();
+        CheckWinCondition();
     }
 }
 // Used for adding money buttons.  Mostly for testing.
@@ -28,7 +29,7 @@ function AddMoney(amount) {
     if (currency != null) {
         let value = parseInt(currency.innerText);
         value += amount;
-        currency.innerText = currency.toString();
+        currency.innerText = value.toString();
     }
 }
 // Updates count of new unit
@@ -47,7 +48,7 @@ function PurchaseUnit(unit) {
             amountOfUnitsValue++;
             currencyValue -= unitCost;
             amountOfUnits.innerText = amountOfUnitsValue.toString();
-            currency.innerText = currency.toString();
+            currency.innerText = currencyValue.toString();
             let values = GetValues();
             // Sets multiple intervals.  Needs to be refactored.
             // Instead of having separte interval for each unit.  Need to combine the autoclicks and set interval based off that.
@@ -136,10 +137,13 @@ function UpdateUnitCost(unit) {
         document.getElementsByClassName(unit + "Cost")[0].innerHTML = unitCost.toString();
     }
 }
-// Isue here is with calc being done in the interval
+// Need to adjust this to make the autoclicker minus from zombies.
 function UpdateAutoclicker(autoclicks) {
     let currency = document.getElementById("currency");
+    let zombies = document.getElementById("zombies");
+    let zombiesValue = parseInt(zombies.innerText);
     let currencyValue = 0;
+    // this needs ajusting.
     if (currency != null) {
         clearInterval(interval);
         interval = setInterval(() => {
@@ -166,6 +170,7 @@ function BuyBuff(elem, cost) {
         }
     }
 }
+// Shows and hides a modal.
 function ShowModal(text) {
     let box = document.getElementById("modalContent");
     let background = document.getElementById("modalBackground");
@@ -179,5 +184,38 @@ function ShowModal(text) {
             box.style.height = "0px";
             background.style.height = "0px";
         }
+    }
+}
+// Used in a button to reset all fields to 0 again.
+function Reset() {
+    interval = 0;
+    count = 0;
+    level = 1;
+    document.getElementById("level").innerText = level.toString();
+    document.getElementById("zombies").innerText = "10";
+    document.getElementById("currency").innerText = "0";
+    document.getElementById("clicks").innerText = "0";
+    document.getElementById("infantrymen").innerText = "0";
+    document.getElementById("machineguns").innerText = "0";
+    document.getElementById("turrets").innerText = "0";
+    document.getElementById("cannons").innerText = "0";
+    document.getElementById("gunships").innerText = "0";
+    document.getElementById("battleships").innerText = "0";
+    document.getElementById("sateliteguns").innerText = "0";
+    document.getElementById("spaceships").innerText = "0";
+}
+// Used to check if zombies are at 0
+function CheckWinCondition() {
+    let zombies = document.getElementById("zombies");
+    let level = document.getElementById("level");
+    let zombiesValue = parseInt(zombies.innerText);
+    let levelValue = parseInt(level.innerText);
+    if (zombiesValue <= 0) {
+        alert(`Congrats! You beat level ${levelValue}`);
+        levelValue++;
+        level.innerText = levelValue.toString();
+        // Raise amount of zombies here.  Later to be done by a function.
+        zombiesValue = levelValue * 10;
+        zombies.innerText = zombiesValue.toString();
     }
 }
