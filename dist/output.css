@@ -95,7 +95,15 @@ button:hover {
 .lowerbuttons {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid white;
+}
+
+.evenLowerButtons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   margin: 0 auto;
   border: 1px solid white;
 }
