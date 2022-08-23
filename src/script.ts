@@ -14,16 +14,20 @@ function NotReady() {
 function UpdateCountV2() {
   let clicks = document.getElementById("clicks");
   let zombies = document.getElementById("zombies");
+  let currency = document.getElementById("currency");
 
-  if (clicks != null && zombies != null) {
+  if (clicks != null && zombies != null && currency != null) {
     let clicksValue = parseInt(clicks.innerText);
     let zombiesValue = parseInt(zombies.innerText);
+    let currencyValue = parseInt(currency.innerText);
 
     zombiesValue--;
     clicksValue++;
+    currencyValue++;
 
     clicks.innerText = clicksValue.toString();
     zombies.innerText = zombiesValue.toString();
+    currency.innerText = currencyValue.toString();
 
     CheckWinCondition();
   }
@@ -91,6 +95,8 @@ function PurchaseUnit(unit: string) {
   }
 }
 
+// Gets values of all the infantry.
+// Returns an object with all the values.
 function GetValues() {
   const values = { infantrymen: 0, machineguns: 0, turrets: 0, cannons: 0, gunships: 0, battleships: 0, sateliteguns: 0, spaceships: 0 };
 
@@ -223,7 +229,7 @@ function ShowModal(text: string) {
 
 // Used in a button to reset all fields to 0 again.
 function Reset(): void {
-  interval = 0;
+  clearInterval(interval);
   count = 0;
   level = 1;
 
@@ -231,6 +237,7 @@ function Reset(): void {
   document.getElementById("zombies")!.innerText = "10";
   document.getElementById("currency")!.innerText = "0";
   document.getElementById("clicks")!.innerText = "0";
+  document.getElementById("autoClicks")!.innerText = "0";
 
   document.getElementById("infantrymen")!.innerText = "0";
   document.getElementById("machineguns")!.innerText = "0";
@@ -240,22 +247,32 @@ function Reset(): void {
   document.getElementById("battleships")!.innerText = "0";
   document.getElementById("sateliteguns")!.innerText = "0";
   document.getElementById("spaceships")!.innerText = "0";
+  // Reset also needs to set the value of unit price to level 1 levels
 }
 
 // Used to check if zombies are at 0
 function CheckWinCondition(): void {
   let zombies = document.getElementById("zombies")!;
-  let level = document.getElementById("level")!;
+
   let zombiesValue = parseInt(zombies.innerText);
-  let levelValue = parseInt(level.innerText);
 
   if (zombiesValue <= 0) {
-    alert(`Congrats! You beat level ${levelValue}`);
-    levelValue++;
-    level.innerText = levelValue.toString();
+    alert(`Congrats! You beat level ${level}`);
+    SetLevel(level++);
 
     // Raise amount of zombies here.  Later to be done by a function.
-    zombiesValue = levelValue * 10;
-    zombies.innerText = zombiesValue.toString();
   }
+}
+
+function SetLevel(levelValue: number) {
+  alert(`level set to ${levelValue}`);
+
+  let level = document.getElementById("level")!;
+  level.innerText = levelValue.toString();
+
+  let zombies = document.getElementById("zombies")!;
+  let zombiesValue = parseInt(zombies.innerText);
+
+  zombiesValue = levelValue * 10;
+  zombies.innerText = zombiesValue.toString();
 }
