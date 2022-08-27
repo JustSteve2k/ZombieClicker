@@ -1,16 +1,17 @@
 "use strict";
+//import { NotReady, AddMoney } from "./dev";
 var _a;
 let interval = 0;
 let count = 0;
 let level = 1;
 // Event listeners
-(_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", UpdateCountV2);
+(_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", ManualClicks);
 // Placeholder function.
 function NotReady() {
     alert("This function is not implemented yet.");
 }
 // Used for manual clicks.  Should probably have a better name.
-function UpdateCountV2() {
+function ManualClicks() {
     let clicks = document.getElementById("clicks");
     let zombies = document.getElementById("zombies");
     let currency = document.getElementById("currency");
@@ -77,6 +78,8 @@ function PurchaseUnit(unit) {
             alert("not enough money for " + unit);
     }
 }
+// Gets values of all the infantry.
+// Returns an object with all the values.
 function GetValues() {
     const values = { infantrymen: 0, machineguns: 0, turrets: 0, cannons: 0, gunships: 0, battleships: 0, sateliteguns: 0, spaceships: 0 };
     values.infantrymen = parseInt(document.getElementById("infantrymen").innerText);
@@ -92,7 +95,7 @@ function GetValues() {
 // Outputs values to the console.
 // TBD
 function ConsoleOutputValues(values) {
-    console.clear();
+    //console.clear();
     //console.log(`Unit cost - ${unitCost}`);
     //console.log(`autoclicks - ${autoclicksValue}`);
     console.log(`Infantrymen - ${values.infantrymen}`);
@@ -153,7 +156,11 @@ function UpdateAutoclicker(autoclicks) {
         interval = setInterval(() => {
             currencyValue = parseInt(currency.innerText);
             currencyValue += autoclicks;
+            zombiesValue -= autoclicks;
             currency.innerText = currencyValue.toString();
+            zombies.innerText = zombiesValue.toString();
+            CheckWinCondition();
+            console.log(`Zombies Value - ${zombiesValue}`);
         }, 1000);
     }
 }
@@ -216,7 +223,8 @@ function CheckWinCondition() {
     let zombiesValue = parseInt(zombies.innerText);
     if (zombiesValue <= 0) {
         alert(`Congrats! You beat level ${level}`);
-        SetLevel(level++);
+        level++;
+        SetLevel(level);
         // Raise amount of zombies here.  Later to be done by a function.
     }
 }
@@ -228,4 +236,5 @@ function SetLevel(levelValue) {
     let zombiesValue = parseInt(zombies.innerText);
     zombiesValue = levelValue * 10;
     zombies.innerText = zombiesValue.toString();
+    clearInterval(interval);
 }

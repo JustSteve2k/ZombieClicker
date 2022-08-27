@@ -1,9 +1,11 @@
+//import { NotReady, AddMoney } from "./dev";
+
 let interval = 0;
 let count = 0;
 let level = 1;
 
 // Event listeners
-document.getElementById("tank")?.addEventListener("click", UpdateCountV2);
+document.getElementById("tank")?.addEventListener("click", ManualClicks);
 
 // Placeholder function.
 function NotReady() {
@@ -11,7 +13,7 @@ function NotReady() {
 }
 
 // Used for manual clicks.  Should probably have a better name.
-function UpdateCountV2() {
+function ManualClicks() {
   let clicks = document.getElementById("clicks");
   let zombies = document.getElementById("zombies");
   let currency = document.getElementById("currency");
@@ -116,7 +118,7 @@ function GetValues() {
 // TBD
 
 function ConsoleOutputValues(values: any): void {
-  console.clear();
+  //console.clear();
   //console.log(`Unit cost - ${unitCost}`);
   //console.log(`autoclicks - ${autoclicksValue}`);
   console.log(`Infantrymen - ${values.infantrymen}`);
@@ -185,7 +187,11 @@ function UpdateAutoclicker(autoclicks: number) {
     interval = setInterval(() => {
       currencyValue = parseInt(currency!.innerText);
       currencyValue += autoclicks;
+      zombiesValue -= autoclicks;
       currency!.innerText = currencyValue.toString();
+      zombies!.innerText = zombiesValue.toString();
+      CheckWinCondition();
+      console.log(`Zombies Value - ${zombiesValue}`);
     }, 1000);
   }
 }
@@ -253,12 +259,12 @@ function Reset(): void {
 // Used to check if zombies are at 0
 function CheckWinCondition(): void {
   let zombies = document.getElementById("zombies")!;
-
   let zombiesValue = parseInt(zombies.innerText);
 
   if (zombiesValue <= 0) {
     alert(`Congrats! You beat level ${level}`);
-    SetLevel(level++);
+    level++;
+    SetLevel(level);
 
     // Raise amount of zombies here.  Later to be done by a function.
   }
@@ -275,4 +281,5 @@ function SetLevel(levelValue: number) {
 
   zombiesValue = levelValue * 10;
   zombies.innerText = zombiesValue.toString();
+  clearInterval(interval);
 }
