@@ -7,6 +7,7 @@ body {
 h2,
 h3 {
   text-align: center;
+  text-decoration: underline;
 }
 
 p {
@@ -65,51 +66,35 @@ button:hover {
   margin: 0rem 2.5%;
 }
 
-.upperButtonArea {
-  width: 100%;
-  height: 30%;
+.buttonBackground {
+  width: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   margin: 1rem auto;
   border: 1px solid white;
+  border-radius: 12px;
+}
+
+.upperButtonArea {
+  height: 30%;
+  background-color: red;
 }
 
 .middleButtonArea {
-  width: 100%;
   height: 30%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: flex-start;
-  margin: 1rem auto;
-  border: 1px solid white;
 }
 .middleButtonArea button {
   width: 5rem;
 }
 
 .lowerbuttons {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 0 auto;
-  border: 1px solid white;
+  background-color: blue;
 }
 
 .evenLowerButtons {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 0 auto;
-  border: 1px solid white;
-}
-
-.testbutton {
-  margin: 0 0.5rem;
+  background-color: orange;
 }
 
 .unitCounts {

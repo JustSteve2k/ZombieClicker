@@ -14,11 +14,13 @@
     <div id="main">
       <div id="left" class="box">
         <h2>Clicker</h2>
-        <div id="tank"></div>
+        <div class="buttonBackground">
+          <div id="tank"></div>
+        </div>
       </div>
       <div id="middle" class="box">
         <h2>Purchase Units</h2>
-        <div class="upperButtonArea">
+        <div class="upperButtonArea buttonBackground">
           <button class="realbutton" onclick="PurchaseUnit('infantrymen')">Infantrymen - $<span class="infantrymenCost">10</span></button>
           <button class="realbutton" onclick="PurchaseUnit('machineguns')">Machineguns - $<span class="machinegunsCost">20</span></button>
           <button class="realbutton" onclick="PurchaseUnit('turrets')">Turrets - $<span class="turretsCost">40</span></button>
@@ -50,13 +52,13 @@
         </div>
         -->
         <h2>Dev Money</h2>
-        <div class="lowerbuttons">
-          <button class="testbutton" onclick="AddMoney(160)">Add $160</button>
-          <button class="testbutton" onclick="AddMoney(320)">Add $320</button>
-          <button class="testbutton" onclick="AddMoney(640)">Add $640</button>
+        <div class="lowerbuttons buttonBackground">
+          <button onclick="AddMoney(160)">Add $160</button>
+          <button onclick="AddMoney(320)">Add $320</button>
+          <button onclick="AddMoney(640)">Add $640</button>
         </div>
         <h2>Buttons</h2>
-        <div class="evenLowerButtons">
+        <div class="evenLowerButtons buttonBackground">
           <button onclick="Reset()">Reset</button>
           <button onclick="ShowModal('test')">Modal</button>
           <button onclick="SetLevel(6)">SL 6</button>
