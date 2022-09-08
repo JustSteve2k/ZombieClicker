@@ -4,6 +4,7 @@ var _a;
 let interval = 0;
 let count = 0;
 let level = 1;
+let num = 0;
 // Event listeners
 (_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", ManualClicks);
 // Placeholder function.
@@ -15,6 +16,8 @@ function ManualClicks() {
     let clicks = document.getElementById("clicks");
     let zombies = document.getElementById("zombies");
     let currency = document.getElementById("currency");
+    if (num === 0)
+        num = StartTimer(10, 1);
     if (clicks != null && zombies != null && currency != null) {
         let clicksValue = parseInt(clicks.innerText);
         let zombiesValue = parseInt(zombies.innerText);
@@ -237,4 +240,20 @@ function SetLevel(levelValue) {
     zombiesValue = levelValue * 10;
     zombies.innerText = zombiesValue.toString();
     clearInterval(interval);
+}
+function StartTimer(initial, speed) {
+    let time = initial;
+    console.log("Timer Started");
+    //Upon starting of click start timer from initial going down to zero.
+    setInterval(() => {
+        time -= speed;
+        console.log(time);
+    }, 1000);
+}
+function StartRound() {
+    console.log("round Started");
+    let zombies = 10;
+    let roundInProgress = true;
+    while (roundInProgress)
+        console.log("round Ended");
 }

@@ -3,6 +3,7 @@
 let interval = 0;
 let count = 0;
 let level = 1;
+let num = 0;
 
 // Event listeners
 document.getElementById("tank")?.addEventListener("click", ManualClicks);
@@ -282,4 +283,26 @@ function SetLevel(levelValue: number) {
   zombiesValue = levelValue * 10;
   zombies.innerText = zombiesValue.toString();
   clearInterval(interval);
+}
+
+function StartTimer(initial: number, speed: number) {
+  let time = initial;
+  console.log("Timer Started");
+
+  //Upon starting of click start timer from initial going down to zero.
+  setInterval(() => {
+    time -= speed;
+
+    console.log(time);
+  }, 1000);
+}
+
+function StartRound() {
+  console.log("round Started");
+  let zombies = 10;
+  let roundInProgress = true;
+
+  while (roundInProgress) {}
+
+  console.log("round Ended");
 }
