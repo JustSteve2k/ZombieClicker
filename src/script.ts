@@ -3,10 +3,18 @@
 let interval = 0;
 let count = 0;
 let level = 1;
-let num = 0;
 
 // Event listeners
 document.getElementById("tank")?.addEventListener("click", ManualClicks);
+document.getElementById("Reset")?.addEventListener("click", () => {
+  Reset();
+});
+document.getElementById("btnStartTimer")?.addEventListener("click", () => {
+  StartTimer(10, 1000);
+});
+document.getElementById("btnStopTimer")?.addEventListener("click", () => {
+  StopTimer();
+});
 
 // Placeholder function.
 function NotReady() {
@@ -18,6 +26,8 @@ function ManualClicks() {
   let clicks = document.getElementById("clicks");
   let zombies = document.getElementById("zombies");
   let currency = document.getElementById("currency");
+
+  if (interval === 0) StartTimer(10, 1000);
 
   if (clicks != null && zombies != null && currency != null) {
     let clicksValue = parseInt(clicks.innerText);
@@ -271,6 +281,13 @@ function CheckWinCondition(): void {
   }
 }
 
+function CheckLoseCondition(time: number): void {
+  if (time === 0) {
+    clearInterval(interval);
+    alert("You lost!");
+  }
+}
+
 function SetLevel(levelValue: number) {
   alert(`level set to ${levelValue}`);
 
@@ -279,6 +296,8 @@ function SetLevel(levelValue: number) {
 
   let zombies = document.getElementById("zombies")!;
   let zombiesValue = parseInt(zombies.innerText);
+  let timer = document.getElementById("timer")!;
+  timer.innerText = "10";
 
   zombiesValue = levelValue * 10;
   zombies.innerText = zombiesValue.toString();
@@ -290,19 +309,19 @@ function StartTimer(initial: number, speed: number) {
   console.log("Timer Started");
 
   //Upon starting of click start timer from initial going down to zero.
-  setInterval(() => {
-    time -= speed;
-
+  interval = setInterval(() => {
+    time -= 1;
     console.log(time);
-  }, 1000);
+    document.getElementById("timer")!.innerText = time.toString();
+    CheckLoseCondition(time);
+  }, speed);
 }
 
-function StartRound() {
-  console.log("round Started");
-  let zombies = 10;
-  let roundInProgress = true;
+function StopTimer() {
+  clearInterval(interval);
 
-  while (roundInProgress) {}
-
-  console.log("round Ended");
+  document.getElementById("timer")!.innerText = (10).toString();
+  console.log("Timer Stopped!");
 }
+
+// function ResetTimer();

@@ -1,12 +1,20 @@
 "use strict";
 //import { NotReady, AddMoney } from "./dev";
-var _a;
+var _a, _b, _c, _d;
 let interval = 0;
 let count = 0;
 let level = 1;
-let num = 0;
 // Event listeners
 (_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", ManualClicks);
+(_b = document.getElementById("Reset")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
+    Reset();
+});
+(_c = document.getElementById("btnStartTimer")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
+    StartTimer(10, 1000);
+});
+(_d = document.getElementById("btnStopTimer")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
+    StopTimer();
+});
 // Placeholder function.
 function NotReady() {
     alert("This function is not implemented yet.");
@@ -16,8 +24,8 @@ function ManualClicks() {
     let clicks = document.getElementById("clicks");
     let zombies = document.getElementById("zombies");
     let currency = document.getElementById("currency");
-    if (num === 0)
-        num = StartTimer(10, 1);
+    if (interval === 0)
+        StartTimer(10, 1000);
     if (clicks != null && zombies != null && currency != null) {
         let clicksValue = parseInt(clicks.innerText);
         let zombiesValue = parseInt(zombies.innerText);
@@ -231,12 +239,20 @@ function CheckWinCondition() {
         // Raise amount of zombies here.  Later to be done by a function.
     }
 }
+function CheckLoseCondition(time) {
+    if (time === 0) {
+        clearInterval(interval);
+        alert("You lost!");
+    }
+}
 function SetLevel(levelValue) {
     alert(`level set to ${levelValue}`);
     let level = document.getElementById("level");
     level.innerText = levelValue.toString();
     let zombies = document.getElementById("zombies");
     let zombiesValue = parseInt(zombies.innerText);
+    let timer = document.getElementById("timer");
+    timer.innerText = "10";
     zombiesValue = levelValue * 10;
     zombies.innerText = zombiesValue.toString();
     clearInterval(interval);
@@ -245,15 +261,16 @@ function StartTimer(initial, speed) {
     let time = initial;
     console.log("Timer Started");
     //Upon starting of click start timer from initial going down to zero.
-    setInterval(() => {
-        time -= speed;
+    interval = setInterval(() => {
+        time -= 1;
         console.log(time);
-    }, 1000);
+        document.getElementById("timer").innerText = time.toString();
+        CheckLoseCondition(time);
+    }, speed);
 }
-function StartRound() {
-    console.log("round Started");
-    let zombies = 10;
-    let roundInProgress = true;
-    while (roundInProgress)
-        console.log("round Ended");
+function StopTimer() {
+    clearInterval(interval);
+    document.getElementById("timer").innerText = (10).toString();
+    console.log("Timer Stopped!");
 }
+// function ResetTimer();
