@@ -4,10 +4,13 @@ body {
   font-family: Roboto, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2,
-h3 {
+h2 {
   text-align: center;
   text-decoration: underline;
+}
+
+h3 {
+  text-align: center;
 }
 
 p {
@@ -81,6 +84,10 @@ button {
 .upperButtonArea {
   height: 30%;
   background-color: red;
+
+  button {
+    width: 7rem;
+  }
 }
 
 .middleButtonArea {
@@ -121,7 +128,7 @@ button {
 }
 
 .autoClicksHeader {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 // Modal css

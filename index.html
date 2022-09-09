@@ -59,9 +59,12 @@
         </div>
         <h2>Buttons</h2>
         <div class="evenLowerButtons buttonBackground">
-          <button onclick="Reset()">Reset</button>
+          <button id="btnReset">Reset</button>
           <button onclick="ShowModal('test')">Modal</button>
           <button onclick="SetLevel(6)">SL 6</button>
+          <button id="btnStartTimer">Start Timer</button>
+          <button id="btnStopTimer">Stop Timer</button>
+          <button id="btnResetTimer">Reset Timer</button>
         </div>
       </div>
       <div id="right" class="box">
@@ -72,7 +75,7 @@
         <h2>Currency</h2>
         <h3>$ <span id="currency">0</span></h3>
         <h2>Timer</h2>
-        <h3><span id="timer"></span></h3>
+        <h3><span id="timer">10</span></h3>
         <h2 class="autoClicksHeader">AutoClicks</h2>
         <div class="unitCounts">
           <p>

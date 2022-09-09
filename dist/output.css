@@ -4,10 +4,13 @@ body {
   font-family: Roboto, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2,
-h3 {
+h2 {
   text-align: center;
   text-decoration: underline;
+}
+
+h3 {
+  text-align: center;
 }
 
 p {
@@ -81,6 +84,9 @@ button:hover {
   height: 30%;
   background-color: red;
 }
+.upperButtonArea button {
+  width: 7rem;
+}
 
 .middleButtonArea {
   height: 30%;
@@ -119,7 +125,7 @@ button:hover {
 }
 
 .autoClicksHeader {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .modalBackground {
