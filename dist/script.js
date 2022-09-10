@@ -1,19 +1,22 @@
 "use strict";
 //import { NotReady, AddMoney } from "./dev";
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 let interval = 0;
 let count = 0;
 let level = 1;
 // Event listeners
 (_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", ManualClicks);
-(_b = document.getElementById("Reset")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
+(_b = document.getElementById("btnReset")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
     Reset();
 });
 (_c = document.getElementById("btnStartTimer")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
-    StartTimer(10, 1000);
+    StartTimer(1000);
 });
 (_d = document.getElementById("btnStopTimer")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
     StopTimer();
+});
+(_e = document.getElementById("btnResetTimer")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
+    ResetTimer();
 });
 // Placeholder function.
 function NotReady() {
@@ -25,7 +28,7 @@ function ManualClicks() {
     let zombies = document.getElementById("zombies");
     let currency = document.getElementById("currency");
     if (interval === 0)
-        StartTimer(10, 1000);
+        StartTimer(1000);
     if (clicks != null && zombies != null && currency != null) {
         let clicksValue = parseInt(clicks.innerText);
         let zombiesValue = parseInt(zombies.innerText);
@@ -208,7 +211,7 @@ function ShowModal(text) {
         }
     }
 }
-// Used in a button to reset all fields to 0 again.
+// Used in a button to reset all fields to starting points again.
 function Reset() {
     clearInterval(interval);
     count = 0;
@@ -216,6 +219,7 @@ function Reset() {
     document.getElementById("level").innerText = level.toString();
     document.getElementById("zombies").innerText = "10";
     document.getElementById("currency").innerText = "0";
+    document.getElementById("timer").innerText = "10";
     document.getElementById("clicks").innerText = "0";
     document.getElementById("autoClicks").innerText = "0";
     document.getElementById("infantrymen").innerText = "0";
@@ -257,7 +261,8 @@ function SetLevel(levelValue) {
     zombies.innerText = zombiesValue.toString();
     clearInterval(interval);
 }
-function StartTimer(initial, speed) {
+// Start timer with arguments from parameters.
+function StartTimerWArgs(initial, speed) {
     let time = initial;
     console.log("Timer Started");
     //Upon starting of click start timer from initial going down to zero.
@@ -268,9 +273,24 @@ function StartTimer(initial, speed) {
         CheckLoseCondition(time);
     }, speed);
 }
+function StartTimer(speed) {
+    let timer = document.getElementById("timer");
+    let time = parseInt(timer.innerText);
+    console.log("Timer Started");
+    //Upon starting of click start timer from initial going down to zero.
+    interval = setInterval(() => {
+        time -= 1;
+        console.log(time);
+        timer.innerText = time.toString();
+        CheckLoseCondition(time);
+    }, speed);
+}
 function StopTimer() {
     clearInterval(interval);
-    document.getElementById("timer").innerText = (10).toString();
     console.log("Timer Stopped!");
 }
-// function ResetTimer();
+function ResetTimer() {
+    clearInterval(interval);
+    document.getElementById("timer").innerText = (10).toString();
+    console.log("Timer Reset!");
+}

@@ -6,14 +6,17 @@ let level = 1;
 
 // Event listeners
 document.getElementById("tank")?.addEventListener("click", ManualClicks);
-document.getElementById("Reset")?.addEventListener("click", () => {
+document.getElementById("btnReset")?.addEventListener("click", () => {
   Reset();
 });
 document.getElementById("btnStartTimer")?.addEventListener("click", () => {
-  StartTimer(10, 1000);
+  StartTimer(1000);
 });
 document.getElementById("btnStopTimer")?.addEventListener("click", () => {
   StopTimer();
+});
+document.getElementById("btnResetTimer")?.addEventListener("click", () => {
+  ResetTimer();
 });
 
 // Placeholder function.
@@ -27,7 +30,7 @@ function ManualClicks() {
   let zombies = document.getElementById("zombies");
   let currency = document.getElementById("currency");
 
-  if (interval === 0) StartTimer(10, 1000);
+  if (interval === 0) StartTimer(1000);
 
   if (clicks != null && zombies != null && currency != null) {
     let clicksValue = parseInt(clicks.innerText);
@@ -244,7 +247,7 @@ function ShowModal(text: string) {
   }
 }
 
-// Used in a button to reset all fields to 0 again.
+// Used in a button to reset all fields to starting points again.
 function Reset(): void {
   clearInterval(interval);
   count = 0;
@@ -253,6 +256,8 @@ function Reset(): void {
   document.getElementById("level")!.innerText = level.toString();
   document.getElementById("zombies")!.innerText = "10";
   document.getElementById("currency")!.innerText = "0";
+  document.getElementById("timer")!.innerText = "10";
+
   document.getElementById("clicks")!.innerText = "0";
   document.getElementById("autoClicks")!.innerText = "0";
 
@@ -304,7 +309,8 @@ function SetLevel(levelValue: number) {
   clearInterval(interval);
 }
 
-function StartTimer(initial: number, speed: number) {
+// Start timer with arguments from parameters.
+function StartTimerWArgs(initial: number, speed: number) {
   let time = initial;
   console.log("Timer Started");
 
@@ -317,11 +323,30 @@ function StartTimer(initial: number, speed: number) {
   }, speed);
 }
 
+function StartTimer(speed: number) {
+  let timer = document.getElementById("timer")!;
+
+  let time = parseInt(timer.innerText);
+  console.log("Timer Started");
+
+  //Upon starting of click start timer from initial going down to zero.
+  interval = setInterval(() => {
+    time -= 1;
+    console.log(time);
+    timer.innerText = time.toString();
+    CheckLoseCondition(time);
+  }, speed);
+}
+
 function StopTimer() {
   clearInterval(interval);
 
-  document.getElementById("timer")!.innerText = (10).toString();
   console.log("Timer Stopped!");
 }
 
-// function ResetTimer();
+function ResetTimer() {
+  clearInterval(interval);
+
+  document.getElementById("timer")!.innerText = (10).toString();
+  console.log("Timer Reset!");
+}
