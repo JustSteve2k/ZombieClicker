@@ -123,8 +123,22 @@ button {
   visibility: hidden;
 }
 
+/* Right side */
 #right {
   margin: 0rem 2.5%;
+}
+
+.gameStats {
+  width: 90%;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 1rem auto;
+}
+
+.stat {
+  width: 50%;
 }
 
 .autoClicksHeader {
