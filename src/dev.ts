@@ -9,6 +9,7 @@ export function AddMoney(amount: number) {
   }
 }
 
+// Placeholder function.
 export function NotReady() {
   alert("This function is not implemented yet.");
 }
