@@ -1,4 +1,4 @@
-//import { NotReady, AddMoney } from "./dev";
+import { AddMoney } from "./dev.js";
 
 let interval = 0;
 let count = 0;
@@ -19,10 +19,25 @@ document.getElementById("btnResetTimer")?.addEventListener("click", () => {
   ResetTimer();
 });
 
-// Placeholder function.
-function NotReady() {
-  alert("This function is not implemented yet.");
-}
+document.getElementById("btnAddMoney160")?.addEventListener("click", () => {
+  AddMoney(160);
+});
+document.getElementById("btnAddMoney320")?.addEventListener("click", () => {
+  AddMoney(320);
+});
+document.getElementById("btnAddMoney640")?.addEventListener("click", () => {
+  AddMoney(640);
+});
+document.getElementById("btnAddMoney1280")?.addEventListener("click", () => {
+  AddMoney(1280);
+});
+
+document.getElementById("btnPurchaseUnit1")?.addEventListener("click", () => {
+  PurchaseUnit("infantryman");
+});
+document.getElementById("btnPurchaseUnit2")?.addEventListener("click", () => {
+  PurchaseUnit("machineguns");
+});
 
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
@@ -46,17 +61,6 @@ function ManualClicks() {
     currency.innerText = currencyValue.toString();
 
     CheckWinCondition();
-  }
-}
-
-// Used for adding money buttons.  Mostly for testing.
-function AddMoney(amount: number) {
-  let currency = document.getElementById("currency");
-  if (currency != null) {
-    let value = parseInt(currency.innerText);
-    value += amount;
-
-    currency.innerText = value.toString();
   }
 }
 
@@ -306,7 +310,7 @@ function SetLevel(levelValue: number) {
 
   zombiesValue = levelValue * 10;
   zombies.innerText = zombiesValue.toString();
-  clearInterval(interval);
+  ResetTimer();
 }
 
 // Start timer with arguments from parameters.
@@ -346,6 +350,8 @@ function StopTimer() {
 
 function ResetTimer() {
   clearInterval(interval);
+  console.log(`interval is - ${interval}`);
+  interval = 0;
 
   document.getElementById("timer")!.innerText = (10).toString();
   console.log("Timer Reset!");

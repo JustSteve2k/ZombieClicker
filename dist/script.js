@@ -1,6 +1,5 @@
-"use strict";
-//import { NotReady, AddMoney } from "./dev";
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
+import { AddMoney } from "./dev.js";
 let interval = 0;
 let count = 0;
 let level = 1;
@@ -18,10 +17,24 @@ let level = 1;
 (_e = document.getElementById("btnResetTimer")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
     ResetTimer();
 });
-// Placeholder function.
-function NotReady() {
-    alert("This function is not implemented yet.");
-}
+(_f = document.getElementById("btnAddMoney160")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", () => {
+    AddMoney(160);
+});
+(_g = document.getElementById("btnAddMoney320")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
+    AddMoney(320);
+});
+(_h = document.getElementById("btnAddMoney640")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
+    AddMoney(640);
+});
+(_j = document.getElementById("btnAddMoney1280")) === null || _j === void 0 ? void 0 : _j.addEventListener("click", () => {
+    AddMoney(1280);
+});
+(_k = document.getElementById("btnPurchaseUnit1")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+    PurchaseUnit("infantryman");
+});
+(_l = document.getElementById("btnPurchaseUnit2")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
+    PurchaseUnit("machineguns");
+});
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
     let clicks = document.getElementById("clicks");
@@ -40,15 +53,6 @@ function ManualClicks() {
         zombies.innerText = zombiesValue.toString();
         currency.innerText = currencyValue.toString();
         CheckWinCondition();
-    }
-}
-// Used for adding money buttons.  Mostly for testing.
-function AddMoney(amount) {
-    let currency = document.getElementById("currency");
-    if (currency != null) {
-        let value = parseInt(currency.innerText);
-        value += amount;
-        currency.innerText = value.toString();
     }
 }
 // Updates count of new unit
@@ -259,7 +263,7 @@ function SetLevel(levelValue) {
     timer.innerText = "10";
     zombiesValue = levelValue * 10;
     zombies.innerText = zombiesValue.toString();
-    clearInterval(interval);
+    ResetTimer();
 }
 // Start timer with arguments from parameters.
 function StartTimerWArgs(initial, speed) {
@@ -291,6 +295,8 @@ function StopTimer() {
 }
 function ResetTimer() {
     clearInterval(interval);
+    console.log(`interval is - ${interval}`);
+    interval = 0;
     document.getElementById("timer").innerText = (10).toString();
     console.log("Timer Reset!");
 }
