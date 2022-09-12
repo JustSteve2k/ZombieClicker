@@ -21,14 +21,18 @@
       <div id="middle" class="box">
         <h2>Purchase Units</h2>
         <div class="upperButtonArea buttonBackground">
-          <button class="realbutton" onclick="PurchaseUnit('infantrymen')">Infantrymen - $<span class="infantrymenCost">10</span></button>
-          <button class="realbutton" onclick="PurchaseUnit('machineguns')">Machineguns - $<span class="machinegunsCost">20</span></button>
-          <button class="realbutton" onclick="PurchaseUnit('turrets')">Turrets - $<span class="turretsCost">40</span></button>
-          <button class="realbutton" onclick="PurchaseUnit('cannons')">Cannons - $<span class="cannonsCost">80</span></button>
-          <button class="realbutton" onclick="PurchaseUnit('gunships')">Gunships - $<span class="gunshipsCost">160</span></button>
-          <button class="realbutton" onclick="PurchaseUnit('battleships')">Battleships - $<span class="battleshipsCost">320</span></button>
-          <button class="realbutton" onclick="PurchaseUnit('sateliteguns')">Sateliteguns - $<span class="satelitegunsCost">640</span></button>
-          <button class="realbutton" onclick="PurchaseUnit('spaceships')">Spaceships - $<span class="spaceshipsCost">1280</span></button>
+          <button id="btnPurchaseUnit1" class="realbutton">Infantrymen - $<span class="infantrymenCost">10</span></button>
+          <button id="btnPurchaseUnit2" class="realbutton">Machineguns - $<span class="machinegunsCost">20</span></button>
+          <button id="btnPurchaseUnit3" class="realbutton" onclick="PurchaseUnit('turrets')">Turrets - $<span class="turretsCost">40</span></button>
+          <button id="btnPurchaseUnit4" class="realbutton" onclick="PurchaseUnit('cannons')">Cannons - $<span class="cannonsCost">80</span></button>
+          <button id="btnPurchaseUnit5" class="realbutton" onclick="PurchaseUnit('gunships')">Gunships - $<span class="gunshipsCost">160</span></button>
+          <button id="btnPurchaseUnit6" class="realbutton" onclick="PurchaseUnit('battleships')">
+            Battleships - $<span class="battleshipsCost">320</span>
+          </button>
+          <button id="btnPurchaseUnit7" class="realbutton" onclick="PurchaseUnit('sateliteguns')">
+            Sateliteguns - $<span class="satelitegunsCost">640</span>
+          </button>
+          <button id="btnPurchaseUnit8" class="realbutton" onclick="PurchaseUnit('spaceships')">Spaceships - $<span class="spaceshipsCost">1280</span></button>
         </div>
         <!--
         <h2>Buffs</h2>
@@ -53,9 +57,10 @@
         -->
         <h2>Dev Money</h2>
         <div class="lowerbuttons buttonBackground">
-          <button onclick="AddMoney(160)">Add $160</button>
-          <button onclick="AddMoney(320)">Add $320</button>
-          <button onclick="AddMoney(640)">Add $640</button>
+          <button id="btnAddMoney160">Add $160</button>
+          <button id="btnAddMoney320">Add $320</button>
+          <button id="btnAddMoney640">Add $640</button>
+          <button id="btnAddMoney1280">Add $1280</button>
         </div>
         <h2>Buttons</h2>
         <div class="evenLowerButtons buttonBackground">
@@ -125,6 +130,6 @@
       </div>
     </div>
 
-    <script src="./dist/script.js"></script>
+    <script type="module" src="./dist/script.js"></script>
   </body>
 </html>
