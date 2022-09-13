@@ -33,10 +33,28 @@ document.getElementById("btnAddMoney1280")?.addEventListener("click", () => {
 });
 
 document.getElementById("btnPurchaseUnit1")?.addEventListener("click", () => {
-  PurchaseUnit("infantryman");
+  PurchaseUnit("infantrymen");
 });
 document.getElementById("btnPurchaseUnit2")?.addEventListener("click", () => {
   PurchaseUnit("machineguns");
+});
+document.getElementById("btnPurchaseUnit3")?.addEventListener("click", () => {
+  PurchaseUnit("turrets");
+});
+document.getElementById("btnPurchaseUnit4")?.addEventListener("click", () => {
+  PurchaseUnit("cannons");
+});
+document.getElementById("btnPurchaseUnit5")?.addEventListener("click", () => {
+  PurchaseUnit("gunships");
+});
+document.getElementById("btnPurchaseUnit6")?.addEventListener("click", () => {
+  PurchaseUnit("battleships");
+});
+document.getElementById("btnPurchaseUnit7")?.addEventListener("click", () => {
+  PurchaseUnit("sateliteguns");
+});
+document.getElementById("btnPurchaseUnit8")?.addEventListener("click", () => {
+  PurchaseUnit("spaceships");
 });
 
 // Used for manual clicks.  Should probably have a better name.
@@ -67,8 +85,12 @@ function ManualClicks() {
 // Updates count of new unit
 function PurchaseUnit(unit: string) {
   let currency = document.getElementById("currency");
-  let amountOfUnits = document.getElementById(unit);
+  let amountOfUnits = document.getElementById(unit)!;
   let autoClicks = document.getElementById("autoClicks");
+
+  console.log(currency);
+  console.log(amountOfUnits);
+  console.log(autoClicks);
 
   if (currency != null && amountOfUnits != null && autoClicks != null) {
     let currencyValue = parseInt(currency.innerText);
@@ -76,6 +98,7 @@ function PurchaseUnit(unit: string) {
     let unitCost = 0;
 
     // Determines unit cost.
+    console.log(unit);
     unitCost = parseInt(document.getElementsByClassName(unit + "Cost")[0].innerHTML);
 
     // Checks to see if you have enough currency to purchase unit.  If so, subtracts costs then updates new unit price.

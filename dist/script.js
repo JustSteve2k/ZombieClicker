@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s;
 import { AddMoney } from "./dev.js";
 let interval = 0;
 let count = 0;
@@ -30,10 +30,28 @@ let level = 1;
     AddMoney(1280);
 });
 (_k = document.getElementById("btnPurchaseUnit1")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
-    PurchaseUnit("infantryman");
+    PurchaseUnit("infantrymen");
 });
 (_l = document.getElementById("btnPurchaseUnit2")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
     PurchaseUnit("machineguns");
+});
+(_m = document.getElementById("btnPurchaseUnit3")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
+    PurchaseUnit("turrets");
+});
+(_o = document.getElementById("btnPurchaseUnit4")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
+    PurchaseUnit("cannons");
+});
+(_p = document.getElementById("btnPurchaseUnit5")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
+    PurchaseUnit("gunships");
+});
+(_q = document.getElementById("btnPurchaseUnit6")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
+    PurchaseUnit("battleships");
+});
+(_r = document.getElementById("btnPurchaseUnit7")) === null || _r === void 0 ? void 0 : _r.addEventListener("click", () => {
+    PurchaseUnit("sateliteguns");
+});
+(_s = document.getElementById("btnPurchaseUnit8")) === null || _s === void 0 ? void 0 : _s.addEventListener("click", () => {
+    PurchaseUnit("spaceships");
 });
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
@@ -60,11 +78,15 @@ function PurchaseUnit(unit) {
     let currency = document.getElementById("currency");
     let amountOfUnits = document.getElementById(unit);
     let autoClicks = document.getElementById("autoClicks");
+    console.log(currency);
+    console.log(amountOfUnits);
+    console.log(autoClicks);
     if (currency != null && amountOfUnits != null && autoClicks != null) {
         let currencyValue = parseInt(currency.innerText);
         let amountOfUnitsValue = parseInt(amountOfUnits.innerText);
         let unitCost = 0;
         // Determines unit cost.
+        console.log(unit);
         unitCost = parseInt(document.getElementsByClassName(unit + "Cost")[0].innerHTML);
         // Checks to see if you have enough currency to purchase unit.  If so, subtracts costs then updates new unit price.
         if (currencyValue >= unitCost) {
