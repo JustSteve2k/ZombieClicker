@@ -23,16 +23,12 @@
         <div class="upperButtonArea buttonBackground">
           <button id="btnPurchaseUnit1" class="realbutton">Infantrymen - $<span class="infantrymenCost">10</span></button>
           <button id="btnPurchaseUnit2" class="realbutton">Machineguns - $<span class="machinegunsCost">20</span></button>
-          <button id="btnPurchaseUnit3" class="realbutton" onclick="PurchaseUnit('turrets')">Turrets - $<span class="turretsCost">40</span></button>
-          <button id="btnPurchaseUnit4" class="realbutton" onclick="PurchaseUnit('cannons')">Cannons - $<span class="cannonsCost">80</span></button>
-          <button id="btnPurchaseUnit5" class="realbutton" onclick="PurchaseUnit('gunships')">Gunships - $<span class="gunshipsCost">160</span></button>
-          <button id="btnPurchaseUnit6" class="realbutton" onclick="PurchaseUnit('battleships')">
-            Battleships - $<span class="battleshipsCost">320</span>
-          </button>
-          <button id="btnPurchaseUnit7" class="realbutton" onclick="PurchaseUnit('sateliteguns')">
-            Sateliteguns - $<span class="satelitegunsCost">640</span>
-          </button>
-          <button id="btnPurchaseUnit8" class="realbutton" onclick="PurchaseUnit('spaceships')">Spaceships - $<span class="spaceshipsCost">1280</span></button>
+          <button id="btnPurchaseUnit3" class="realbutton">Turrets - $<span class="turretsCost">40</span></button>
+          <button id="btnPurchaseUnit4" class="realbutton">Cannons - $<span class="cannonsCost">80</span></button>
+          <button id="btnPurchaseUnit5" class="realbutton">Gunships - $<span class="gunshipsCost">160</span></button>
+          <button id="btnPurchaseUnit6" class="realbutton">Battleships - $<span class="battleshipsCost">320</span></button>
+          <button id="btnPurchaseUnit7" class="realbutton">Sateliteguns - $<span class="satelitegunsCost">640</span></button>
+          <button id="btnPurchaseUnit8" class="realbutton">Spaceships - $<span class="spaceshipsCost">1280</span></button>
         </div>
         <!--
         <h2>Buffs</h2>
@@ -65,8 +61,8 @@
         <h2>Buttons</h2>
         <div class="evenLowerButtons buttonBackground">
           <button id="btnReset">Reset</button>
-          <button onclick="ShowModal('test')">Modal</button>
-          <button onclick="SetLevel(6)">SL 6</button>
+          <button id="btnModal">Modal</button>
+          <button id="btnSL6" onclick="SetLevel(6)">SL 6</button>
           <button id="btnStartTimer">Start Timer</button>
           <button id="btnStopTimer">Stop Timer</button>
           <button id="btnResetTimer">Reset Timer</button>
