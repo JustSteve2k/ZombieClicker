@@ -1,4 +1,5 @@
 import { AddMoney } from "./dev.js";
+import { ShowModal } from "./visual.js";
 
 let interval = 0;
 let count = 0;
@@ -31,6 +32,9 @@ document.getElementById("btnAddMoney640")?.addEventListener("click", () => {
 document.getElementById("btnAddMoney1280")?.addEventListener("click", () => {
   AddMoney(1280);
 });
+document.getElementById("btnModal")?.addEventListener("click", () => {
+  ShowModal("test");
+});
 
 document.getElementById("btnPurchaseUnit1")?.addEventListener("click", () => {
   PurchaseUnit("infantrymen");
@@ -55,6 +59,10 @@ document.getElementById("btnPurchaseUnit7")?.addEventListener("click", () => {
 });
 document.getElementById("btnPurchaseUnit8")?.addEventListener("click", () => {
   PurchaseUnit("spaceships");
+});
+
+document.querySelector(".realbutton")?.addEventListener("click", () => {
+  console.log(`event button - ${this}`);
 });
 
 // Used for manual clicks.  Should probably have a better name.
@@ -87,10 +95,6 @@ function PurchaseUnit(unit: string) {
   let currency = document.getElementById("currency");
   let amountOfUnits = document.getElementById(unit)!;
   let autoClicks = document.getElementById("autoClicks");
-
-  console.log(currency);
-  console.log(amountOfUnits);
-  console.log(autoClicks);
 
   if (currency != null && amountOfUnits != null && autoClicks != null) {
     let currencyValue = parseInt(currency.innerText);
@@ -256,24 +260,6 @@ function BuyBuff(elem: HTMLElement, cost: number) {
   }
 }
 
-// Shows and hides a modal.
-function ShowModal(text: string) {
-  let box = document.getElementById("modalContent");
-  let background = document.getElementById("modalBackground");
-
-  document.getElementById("modText")!.innerText = text;
-
-  if (box != null && background != null) {
-    if (box.style.height == "0px") {
-      box.style.height = "200px";
-      background.style.height = "100%";
-    } else {
-      box.style.height = "0px";
-      background.style.height = "0px";
-    }
-  }
-}
-
 // Used in a button to reset all fields to starting points again.
 function Reset(): void {
   clearInterval(interval);
@@ -320,7 +306,7 @@ function CheckLoseCondition(time: number): void {
   }
 }
 
-function SetLevel(levelValue: number) {
+function SetLevel(levelValue: number): void {
   alert(`level set to ${levelValue}`);
 
   let level = document.getElementById("level")!;
@@ -365,13 +351,13 @@ function StartTimer(speed: number) {
   }, speed);
 }
 
-function StopTimer() {
+function StopTimer(): void {
   clearInterval(interval);
 
   console.log("Timer Stopped!");
 }
 
-function ResetTimer() {
+function ResetTimer(): void {
   clearInterval(interval);
   console.log(`interval is - ${interval}`);
   interval = 0;

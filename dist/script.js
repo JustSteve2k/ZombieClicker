@@ -1,5 +1,6 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u;
 import { AddMoney } from "./dev.js";
+import { ShowModal } from "./visual.js";
 let interval = 0;
 let count = 0;
 let level = 1;
@@ -29,29 +30,35 @@ let level = 1;
 (_j = document.getElementById("btnAddMoney1280")) === null || _j === void 0 ? void 0 : _j.addEventListener("click", () => {
     AddMoney(1280);
 });
-(_k = document.getElementById("btnPurchaseUnit1")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+(_k = document.getElementById("btnModal")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+    ShowModal("test");
+});
+(_l = document.getElementById("btnPurchaseUnit1")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
     PurchaseUnit("infantrymen");
 });
-(_l = document.getElementById("btnPurchaseUnit2")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
+(_m = document.getElementById("btnPurchaseUnit2")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
     PurchaseUnit("machineguns");
 });
-(_m = document.getElementById("btnPurchaseUnit3")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
+(_o = document.getElementById("btnPurchaseUnit3")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
     PurchaseUnit("turrets");
 });
-(_o = document.getElementById("btnPurchaseUnit4")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
+(_p = document.getElementById("btnPurchaseUnit4")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
     PurchaseUnit("cannons");
 });
-(_p = document.getElementById("btnPurchaseUnit5")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
+(_q = document.getElementById("btnPurchaseUnit5")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
     PurchaseUnit("gunships");
 });
-(_q = document.getElementById("btnPurchaseUnit6")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
+(_r = document.getElementById("btnPurchaseUnit6")) === null || _r === void 0 ? void 0 : _r.addEventListener("click", () => {
     PurchaseUnit("battleships");
 });
-(_r = document.getElementById("btnPurchaseUnit7")) === null || _r === void 0 ? void 0 : _r.addEventListener("click", () => {
+(_s = document.getElementById("btnPurchaseUnit7")) === null || _s === void 0 ? void 0 : _s.addEventListener("click", () => {
     PurchaseUnit("sateliteguns");
 });
-(_s = document.getElementById("btnPurchaseUnit8")) === null || _s === void 0 ? void 0 : _s.addEventListener("click", () => {
+(_t = document.getElementById("btnPurchaseUnit8")) === null || _t === void 0 ? void 0 : _t.addEventListener("click", () => {
     PurchaseUnit("spaceships");
+});
+(_u = document.querySelector(".realbutton")) === null || _u === void 0 ? void 0 : _u.addEventListener("click", () => {
+    console.log(`event button - ${this}`);
 });
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
@@ -78,9 +85,6 @@ function PurchaseUnit(unit) {
     let currency = document.getElementById("currency");
     let amountOfUnits = document.getElementById(unit);
     let autoClicks = document.getElementById("autoClicks");
-    console.log(currency);
-    console.log(amountOfUnits);
-    console.log(autoClicks);
     if (currency != null && amountOfUnits != null && autoClicks != null) {
         let currencyValue = parseInt(currency.innerText);
         let amountOfUnitsValue = parseInt(amountOfUnits.innerText);
@@ -218,22 +222,6 @@ function BuyBuff(elem, cost) {
         }
         else {
             alert("You don't have enough money to buy this buff.");
-        }
-    }
-}
-// Shows and hides a modal.
-function ShowModal(text) {
-    let box = document.getElementById("modalContent");
-    let background = document.getElementById("modalBackground");
-    document.getElementById("modText").innerText = text;
-    if (box != null && background != null) {
-        if (box.style.height == "0px") {
-            box.style.height = "200px";
-            background.style.height = "100%";
-        }
-        else {
-            box.style.height = "0px";
-            background.style.height = "0px";
         }
     }
 }

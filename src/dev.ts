@@ -1,3 +1,5 @@
+// DEV FUNCTIONS FOR TESTING GAME
+
 // Used for adding money buttons.  Mostly for testing.
 export function AddMoney(amount: number) {
   let currency = document.getElementById("currency");
