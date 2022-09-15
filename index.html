@@ -60,7 +60,7 @@
         </div>
         <h2>Buttons</h2>
         <div class="evenLowerButtons buttonBackground">
-          <button id="btnReset">Reset</button>
+          <button id="btnReset">Reset All</button>
           <button id="btnModal">Modal</button>
           <button id="btnSL6" onclick="SetLevel(6)">SL 6</button>
           <button id="btnStartTimer">Start Timer</button>
@@ -115,13 +115,14 @@
         </div>
       </div>
       <div id="achievements" class="box">Achievements</div>
-      <div id="modalBackground" class="modalBackground">
-        <div style="height: 0px" id="modalContent" class="modalContent">
+      <!-- Modal -->
+      <div id="modalBackground" class="modalBackground hidden">
+        <div id="modalContent" class="modalContent hidden">
           <p class="modalClose">X</p>
+          <h2 id="modHeader">Header</h2>
           <p id="modText">test</p>
-          <br />
-          <button>yes</button>
-          <button onclick="ShowModal('close')">no</button>
+          <button id="btnModalYes">yes</button>
+          <button id="btnModalNo">no</button>
         </div>
       </div>
     </div>
