@@ -1,5 +1,5 @@
 import { AddMoney } from "./dev.js";
-import { ShowModal } from "./visual.js";
+import { ShowModal, CloseModal } from "./visual.js";
 
 let interval = 0;
 let count = 0;
@@ -33,7 +33,13 @@ document.getElementById("btnAddMoney1280")?.addEventListener("click", () => {
   AddMoney(1280);
 });
 document.getElementById("btnModal")?.addEventListener("click", () => {
-  ShowModal("test");
+  ShowModal("test", "this is test content");
+});
+document.getElementById("btnModalYes")?.addEventListener("click", () => {
+  CloseModal();
+});
+document.getElementById("btnModalNo")?.addEventListener("click", () => {
+  CloseModal();
 });
 
 document.getElementById("btnPurchaseUnit1")?.addEventListener("click", () => {
@@ -61,8 +67,8 @@ document.getElementById("btnPurchaseUnit8")?.addEventListener("click", () => {
   PurchaseUnit("spaceships");
 });
 
-document.querySelector(".realbutton")?.addEventListener("click", () => {
-  console.log(`event button - ${this}`);
+document.querySelector(".realbutton")?.addEventListener("click", (event) => {
+  console.log(`event button - ${event}`);
 });
 
 // Used for manual clicks.  Should probably have a better name.

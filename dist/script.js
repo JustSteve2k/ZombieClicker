@@ -1,6 +1,6 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w;
 import { AddMoney } from "./dev.js";
-import { ShowModal } from "./visual.js";
+import { ShowModal, CloseModal } from "./visual.js";
 let interval = 0;
 let count = 0;
 let level = 1;
@@ -31,34 +31,40 @@ let level = 1;
     AddMoney(1280);
 });
 (_k = document.getElementById("btnModal")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
-    ShowModal("test");
+    ShowModal("test", "this is test content");
 });
-(_l = document.getElementById("btnPurchaseUnit1")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
+(_l = document.getElementById("btnModalYes")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
+    CloseModal();
+});
+(_m = document.getElementById("btnModalNo")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
+    CloseModal();
+});
+(_o = document.getElementById("btnPurchaseUnit1")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
     PurchaseUnit("infantrymen");
 });
-(_m = document.getElementById("btnPurchaseUnit2")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
+(_p = document.getElementById("btnPurchaseUnit2")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
     PurchaseUnit("machineguns");
 });
-(_o = document.getElementById("btnPurchaseUnit3")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
+(_q = document.getElementById("btnPurchaseUnit3")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
     PurchaseUnit("turrets");
 });
-(_p = document.getElementById("btnPurchaseUnit4")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
+(_r = document.getElementById("btnPurchaseUnit4")) === null || _r === void 0 ? void 0 : _r.addEventListener("click", () => {
     PurchaseUnit("cannons");
 });
-(_q = document.getElementById("btnPurchaseUnit5")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
+(_s = document.getElementById("btnPurchaseUnit5")) === null || _s === void 0 ? void 0 : _s.addEventListener("click", () => {
     PurchaseUnit("gunships");
 });
-(_r = document.getElementById("btnPurchaseUnit6")) === null || _r === void 0 ? void 0 : _r.addEventListener("click", () => {
+(_t = document.getElementById("btnPurchaseUnit6")) === null || _t === void 0 ? void 0 : _t.addEventListener("click", () => {
     PurchaseUnit("battleships");
 });
-(_s = document.getElementById("btnPurchaseUnit7")) === null || _s === void 0 ? void 0 : _s.addEventListener("click", () => {
+(_u = document.getElementById("btnPurchaseUnit7")) === null || _u === void 0 ? void 0 : _u.addEventListener("click", () => {
     PurchaseUnit("sateliteguns");
 });
-(_t = document.getElementById("btnPurchaseUnit8")) === null || _t === void 0 ? void 0 : _t.addEventListener("click", () => {
+(_v = document.getElementById("btnPurchaseUnit8")) === null || _v === void 0 ? void 0 : _v.addEventListener("click", () => {
     PurchaseUnit("spaceships");
 });
-(_u = document.querySelector(".realbutton")) === null || _u === void 0 ? void 0 : _u.addEventListener("click", () => {
-    console.log(`event button - ${this}`);
+(_w = document.querySelector(".realbutton")) === null || _w === void 0 ? void 0 : _w.addEventListener("click", (event) => {
+    console.log(`event button - ${event}`);
 });
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
