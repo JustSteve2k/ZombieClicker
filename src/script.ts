@@ -42,33 +42,13 @@ document.getElementById("btnModalNo")?.addEventListener("click", () => {
   CloseModal();
 });
 
-document.getElementById("btnPurchaseUnit1")?.addEventListener("click", () => {
-  PurchaseUnit("infantrymen");
-});
-document.getElementById("btnPurchaseUnit2")?.addEventListener("click", () => {
-  PurchaseUnit("machineguns");
-});
-document.getElementById("btnPurchaseUnit3")?.addEventListener("click", () => {
-  PurchaseUnit("turrets");
-});
-document.getElementById("btnPurchaseUnit4")?.addEventListener("click", () => {
-  PurchaseUnit("cannons");
-});
-document.getElementById("btnPurchaseUnit5")?.addEventListener("click", () => {
-  PurchaseUnit("gunships");
-});
-document.getElementById("btnPurchaseUnit6")?.addEventListener("click", () => {
-  PurchaseUnit("battleships");
-});
-document.getElementById("btnPurchaseUnit7")?.addEventListener("click", () => {
-  PurchaseUnit("sateliteguns");
-});
-document.getElementById("btnPurchaseUnit8")?.addEventListener("click", () => {
-  PurchaseUnit("spaceships");
-});
-
-document.querySelector(".realbutton")?.addEventListener("click", (event) => {
-  console.log(`event button - ${event}`);
+const realbutton = document.querySelectorAll(".realbutton");
+realbutton.forEach((sec) => {
+  sec.addEventListener("click", () => {
+    let unit = sec.innerHTML;
+    unit = unit.split(" ")[0].toLowerCase();
+    PurchaseUnit(unit);
+  });
 });
 
 // Used for manual clicks.  Should probably have a better name.

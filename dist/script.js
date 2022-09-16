@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 let interval = 0;
@@ -39,32 +39,37 @@ let level = 1;
 (_m = document.getElementById("btnModalNo")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
     CloseModal();
 });
-(_o = document.getElementById("btnPurchaseUnit1")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
-    PurchaseUnit("infantrymen");
-});
-(_p = document.getElementById("btnPurchaseUnit2")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
-    PurchaseUnit("machineguns");
-});
-(_q = document.getElementById("btnPurchaseUnit3")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
-    PurchaseUnit("turrets");
-});
-(_r = document.getElementById("btnPurchaseUnit4")) === null || _r === void 0 ? void 0 : _r.addEventListener("click", () => {
-    PurchaseUnit("cannons");
-});
-(_s = document.getElementById("btnPurchaseUnit5")) === null || _s === void 0 ? void 0 : _s.addEventListener("click", () => {
-    PurchaseUnit("gunships");
-});
-(_t = document.getElementById("btnPurchaseUnit6")) === null || _t === void 0 ? void 0 : _t.addEventListener("click", () => {
-    PurchaseUnit("battleships");
-});
-(_u = document.getElementById("btnPurchaseUnit7")) === null || _u === void 0 ? void 0 : _u.addEventListener("click", () => {
-    PurchaseUnit("sateliteguns");
-});
-(_v = document.getElementById("btnPurchaseUnit8")) === null || _v === void 0 ? void 0 : _v.addEventListener("click", () => {
-    PurchaseUnit("spaceships");
-});
-(_w = document.querySelector(".realbutton")) === null || _w === void 0 ? void 0 : _w.addEventListener("click", (event) => {
-    console.log(`event button - ${event}`);
+// document.getElementById("btnPurchaseUnit1")?.addEventListener("click", () => {
+//   PurchaseUnit("infantrymen");
+// });
+// document.getElementById("btnPurchaseUnit2")?.addEventListener("click", () => {
+//   PurchaseUnit("machineguns");
+// });
+// document.getElementById("btnPurchaseUnit3")?.addEventListener("click", () => {
+//   PurchaseUnit("turrets");
+// });
+// document.getElementById("btnPurchaseUnit4")?.addEventListener("click", () => {
+//   PurchaseUnit("cannons");
+// });
+// document.getElementById("btnPurchaseUnit5")?.addEventListener("click", () => {
+//   PurchaseUnit("gunships");
+// });
+// document.getElementById("btnPurchaseUnit6")?.addEventListener("click", () => {
+//   PurchaseUnit("battleships");
+// });
+// document.getElementById("btnPurchaseUnit7")?.addEventListener("click", () => {
+//   PurchaseUnit("sateliteguns");
+// });
+// document.getElementById("btnPurchaseUnit8")?.addEventListener("click", () => {
+//   PurchaseUnit("spaceships");
+// });
+const realbutton = document.querySelectorAll(".realbutton");
+realbutton.forEach((sec) => {
+    sec.addEventListener("click", () => {
+        let unit = sec.innerHTML;
+        unit = unit.split(" ")[0].toLowerCase();
+        PurchaseUnit(unit);
+    });
 });
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
