@@ -37,18 +37,6 @@
           <button class="buffButton" onclick="ShowModal('hmm')">Buff 2</button>
           <button class="buffButton" onclick="ShowModal('it works!')">Buff 3</button>
           <button class="buffButton" onclick="ShowModal('Buff 4')">Buff 4</button>
-          <button class="buffButton" onclick="NotReady()">Buff 5</button>
-          <button class="buffButton" onclick="NotReady()">Buff 6</button>
-          <button class="buffButton" onclick="NotReady()">Buff 7</button>
-          <button class="buffButton" onclick="NotReady()">Buff 8</button>
-          <button class="buffButton" onclick="NotReady()">Buff 9</button>
-          <button class="buffButton" onclick="NotReady()">Buff 10</button>
-          <button class="buffButton" onclick="NotReady()">Buff 11</button>
-          <button class="buffButton" onclick="NotReady()">Buff 12</button>
-          <button class="buffButton" onclick="NotReady()">Buff 13</button>
-          <button class="buffButton" onclick="NotReady()">Buff 14</button>
-          <button class="buffButton" onclick="NotReady()">Buff 15</button>
-          <button class="buffButton" onclick="NotReady()">Buff 16</button>
         </div>
         -->
         <h2>Dev Money</h2>
@@ -59,7 +47,7 @@
           <button id="btnAddMoney1280">Add $1280</button>
         </div>
         <h2>Buttons</h2>
-        <div class="evenLowerButtons buttonBackground">
+        <div id="evenLowerButtons" class="evenLowerButtons buttonBackground">
           <button id="btnReset">Reset All</button>
           <button id="btnModal">Modal</button>
           <button id="btnSL6" onclick="SetLevel(6)">SL 6</button>
@@ -71,7 +59,7 @@
 
       <div id="right" class="box">
         <h2>GameStats</h2>
-        <div class="gameStats">
+        <div id="gameStats" class="gameStats">
           <div class="stat">
             <h2>Level</h2>
             <h3><span id="level">1</span></h3>
@@ -93,7 +81,6 @@
         <div class="unitCounts">
           <p>
             Total Clicks - <span id="clicks">0</span><br />
-
             Auto Clicks - <span id="autoClicks">0</span> per second
           </p>
           <p>
@@ -107,8 +94,7 @@
             Spaceships - <span id="spaceships">0</span> <br />
           </p>
         </div>
-
-        <div class="units">
+        <div id="units" class="units">
           <div class="infantrymen"></div>
           <div class="machineguns"></div>
           <div class="turrets"></div>
