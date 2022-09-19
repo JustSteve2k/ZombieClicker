@@ -1,7 +1,9 @@
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
+import { GetValues } from "./values.js";
 
 let interval = 0;
+let aCInterval = 0;
 let count = 0;
 let level = 1;
 
@@ -57,7 +59,10 @@ function ManualClicks() {
   let zombies = document.getElementById("zombies");
   let currency = document.getElementById("currency");
 
-  if (interval === 0) StartTimer(1000);
+  if (interval === 0) {
+    StartTimer(1000);
+    StartAutoClickers();
+  }
 
   if (clicks != null && zombies != null && currency != null) {
     let clicksValue = parseInt(clicks.innerText);
@@ -120,29 +125,12 @@ function PurchaseUnit(unit: string) {
       console.log(`autoclicks - ${autoclicksValue}`);
 
       ConsoleOutputValues(values);
-      UpdateAutoclicker(autoclicksValue);
+      //UpdateAutoclicker(autoclicksValue);
       UpdateUnitCost(unit);
 
       autoClicks.innerText = autoclicksValue.toString();
     } else alert("not enough money for " + unit);
   }
-}
-
-// Gets values of all the infantry.
-// Returns an object with all the values.
-function GetValues() {
-  const values = { infantrymen: 0, machineguns: 0, turrets: 0, cannons: 0, gunships: 0, battleships: 0, sateliteguns: 0, spaceships: 0 };
-
-  values.infantrymen = parseInt(document.getElementById("infantrymen")!.innerText);
-  values.machineguns = parseInt(document.getElementById("machineguns")!.innerText);
-  values.turrets = parseInt(document.getElementById("turrets")!.innerText);
-  values.cannons = parseInt(document.getElementById("cannons")!.innerText);
-  values.gunships = parseInt(document.getElementById("gunships")!.innerText);
-  values.battleships = parseInt(document.getElementById("battleships")!.innerText);
-  values.sateliteguns = parseInt(document.getElementById("sateliteguns")!.innerText);
-  values.spaceships = parseInt(document.getElementById("spaceships")!.innerText);
-
-  return values;
 }
 
 // Outputs values to the console.
@@ -205,27 +193,27 @@ function UpdateUnitCost(unit: string): void {
 
 // Need to adjust this to make the autoclicker minus from zombies.
 function UpdateAutoclicker(autoclicks: number) {
-  let currency = document.getElementById("currency");
+  let currency = document.getElementById("currency")!;
   let zombies = document.getElementById("zombies")!;
   let zombiesValue = parseInt(zombies.innerText);
 
   let currencyValue = 0;
 
   // this needs ajusting.
-  if (currency != null) {
-    clearInterval(interval);
+  clearInterval(interval);
 
-    interval = setInterval(() => {
-      currencyValue = parseInt(currency!.innerText);
-      currencyValue += autoclicks;
-      zombiesValue -= autoclicks;
-      currency!.innerText = currencyValue.toString();
-      zombies!.innerText = zombiesValue.toString();
-      CheckWinCondition();
-      console.log(`Zombies Value - ${zombiesValue}`);
-    }, 1000);
-  }
+  interval = setInterval(() => {
+    currencyValue = parseInt(currency!.innerText);
+    currencyValue += autoclicks;
+    zombiesValue -= autoclicks;
+    currency!.innerText = currencyValue.toString();
+    zombies!.innerText = zombiesValue.toString();
+    CheckWinCondition();
+    console.log(`Zombies Value - ${zombiesValue}`);
+  }, 1000);
 }
+
+function StartAutoClickers() {}
 
 // elem may not be HTML element so watch for that.
 function BuyBuff(elem: HTMLElement, cost: number) {
@@ -322,6 +310,7 @@ function StartTimerWArgs(initial: number, speed: number) {
   }, speed);
 }
 
+// Starts countdown timer, on separate interval than the autoclick interval.
 function StartTimer(speed: number) {
   let timer = document.getElementById("timer")!;
 

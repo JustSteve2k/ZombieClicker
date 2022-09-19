@@ -1,6 +1,7 @@
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
+import { GetValues } from "./values.js";
 let interval = 0;
 let count = 0;
 let level = 1;
@@ -39,30 +40,6 @@ let level = 1;
 (_m = document.getElementById("btnModalNo")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
     CloseModal();
 });
-// document.getElementById("btnPurchaseUnit1")?.addEventListener("click", () => {
-//   PurchaseUnit("infantrymen");
-// });
-// document.getElementById("btnPurchaseUnit2")?.addEventListener("click", () => {
-//   PurchaseUnit("machineguns");
-// });
-// document.getElementById("btnPurchaseUnit3")?.addEventListener("click", () => {
-//   PurchaseUnit("turrets");
-// });
-// document.getElementById("btnPurchaseUnit4")?.addEventListener("click", () => {
-//   PurchaseUnit("cannons");
-// });
-// document.getElementById("btnPurchaseUnit5")?.addEventListener("click", () => {
-//   PurchaseUnit("gunships");
-// });
-// document.getElementById("btnPurchaseUnit6")?.addEventListener("click", () => {
-//   PurchaseUnit("battleships");
-// });
-// document.getElementById("btnPurchaseUnit7")?.addEventListener("click", () => {
-//   PurchaseUnit("sateliteguns");
-// });
-// document.getElementById("btnPurchaseUnit8")?.addEventListener("click", () => {
-//   PurchaseUnit("spaceships");
-// });
 const realbutton = document.querySelectorAll(".realbutton");
 realbutton.forEach((sec) => {
     sec.addEventListener("click", () => {
@@ -76,8 +53,10 @@ function ManualClicks() {
     let clicks = document.getElementById("clicks");
     let zombies = document.getElementById("zombies");
     let currency = document.getElementById("currency");
-    if (interval === 0)
+    if (interval === 0) {
         StartTimer(1000);
+        StartAutoClickers();
+    }
     if (clicks != null && zombies != null && currency != null) {
         let clicksValue = parseInt(clicks.innerText);
         let zombiesValue = parseInt(zombies.innerText);
@@ -125,27 +104,13 @@ function PurchaseUnit(unit) {
             console.log(`Unit cost - ${unitCost}`);
             console.log(`autoclicks - ${autoclicksValue}`);
             ConsoleOutputValues(values);
-            UpdateAutoclicker(autoclicksValue);
+            //UpdateAutoclicker(autoclicksValue);
             UpdateUnitCost(unit);
             autoClicks.innerText = autoclicksValue.toString();
         }
         else
             alert("not enough money for " + unit);
     }
-}
-// Gets values of all the infantry.
-// Returns an object with all the values.
-function GetValues() {
-    const values = { infantrymen: 0, machineguns: 0, turrets: 0, cannons: 0, gunships: 0, battleships: 0, sateliteguns: 0, spaceships: 0 };
-    values.infantrymen = parseInt(document.getElementById("infantrymen").innerText);
-    values.machineguns = parseInt(document.getElementById("machineguns").innerText);
-    values.turrets = parseInt(document.getElementById("turrets").innerText);
-    values.cannons = parseInt(document.getElementById("cannons").innerText);
-    values.gunships = parseInt(document.getElementById("gunships").innerText);
-    values.battleships = parseInt(document.getElementById("battleships").innerText);
-    values.sateliteguns = parseInt(document.getElementById("sateliteguns").innerText);
-    values.spaceships = parseInt(document.getElementById("spaceships").innerText);
-    return values;
 }
 // Outputs values to the console.
 // TBD
@@ -219,6 +184,7 @@ function UpdateAutoclicker(autoclicks) {
         }, 1000);
     }
 }
+function StartAutoClickers() { }
 // elem may not be HTML element so watch for that.
 function BuyBuff(elem, cost) {
     let currency = document.getElementById("currency");
@@ -298,6 +264,7 @@ function StartTimerWArgs(initial, speed) {
         CheckLoseCondition(time);
     }, speed);
 }
+// Starts countdown timer, on separate interval than the autoclick interval.
 function StartTimer(speed) {
     let timer = document.getElementById("timer");
     let time = parseInt(timer.innerText);
