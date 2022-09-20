@@ -1,8 +1,9 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues } from "./values.js";
 let interval = 0;
+let aCInterval = 0;
 let count = 0;
 let level = 1;
 // Event listeners
@@ -31,13 +32,16 @@ let level = 1;
 (_j = document.getElementById("btnAddMoney1280")) === null || _j === void 0 ? void 0 : _j.addEventListener("click", () => {
     AddMoney(1280);
 });
-(_k = document.getElementById("btnModal")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+(_k = document.getElementById("btnCalcAutoClicks")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+    CalcAutoClicksValue();
+});
+(_l = document.getElementById("btnModal")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
     ShowModal("test", "this is test content");
 });
-(_l = document.getElementById("btnModalYes")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
+(_m = document.getElementById("btnModalYes")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
     CloseModal();
 });
-(_m = document.getElementById("btnModalNo")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
+(_o = document.getElementById("btnModalNo")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
     CloseModal();
 });
 const realbutton = document.querySelectorAll(".realbutton");
@@ -55,7 +59,7 @@ function ManualClicks() {
     let currency = document.getElementById("currency");
     if (interval === 0) {
         StartTimer(1000);
-        StartAutoClickers();
+        StartACInterval();
     }
     if (clicks != null && zombies != null && currency != null) {
         let clicksValue = parseInt(clicks.innerText);
@@ -165,26 +169,40 @@ function UpdateUnitCost(unit) {
     }
 }
 // Need to adjust this to make the autoclicker minus from zombies.
-function UpdateAutoclicker(autoclicks) {
+function StartACInterval() {
     let currency = document.getElementById("currency");
     let zombies = document.getElementById("zombies");
     let zombiesValue = parseInt(zombies.innerText);
     let currencyValue = 0;
+    let autoclicks = CalcAutoClicksValue();
     // this needs ajusting.
-    if (currency != null) {
-        clearInterval(interval);
-        interval = setInterval(() => {
-            currencyValue = parseInt(currency.innerText);
-            currencyValue += autoclicks;
-            zombiesValue -= autoclicks;
-            currency.innerText = currencyValue.toString();
-            zombies.innerText = zombiesValue.toString();
-            CheckWinCondition();
-            console.log(`Zombies Value - ${zombiesValue}`);
-        }, 1000);
-    }
+    clearInterval(aCInterval);
+    console.log(`aCInterval - ${aCInterval}`);
+    aCInterval = setInterval(() => {
+        currencyValue = parseInt(currency.innerText);
+        currencyValue += autoclicks;
+        zombiesValue -= autoclicks;
+        currency.innerText = currencyValue.toString();
+        zombies.innerText = zombiesValue.toString();
+        CheckWinCondition();
+        console.log(`Zombies Value - ${zombiesValue}`);
+    }, 1000);
 }
-function StartAutoClickers() { }
+function CalcAutoClicksValue() {
+    let values = GetValues();
+    let autoclicksValue = values.infantrymen * 1 +
+        values.machineguns * 2 +
+        values.turrets * 4 +
+        values.cannons * 8 +
+        values.gunships * 16 +
+        values.battleships * 32 +
+        values.sateliteguns * 64 +
+        values.spaceships * 128; // Update with more units later.
+    console.log("Current Values");
+    console.log(values);
+    console.log(`Autoclicks - ${autoclicksValue}`);
+    return autoclicksValue;
+}
 // elem may not be HTML element so watch for that.
 function BuyBuff(elem, cost) {
     let currency = document.getElementById("currency");
@@ -237,7 +255,8 @@ function CheckWinCondition() {
 function CheckLoseCondition(time) {
     if (time === 0) {
         clearInterval(interval);
-        alert("You lost!");
+        clearInterval(aCInterval);
+        alert("You have been overrun with zombies!");
     }
 }
 function SetLevel(levelValue) {
@@ -251,6 +270,7 @@ function SetLevel(levelValue) {
     zombiesValue = levelValue * 10;
     zombies.innerText = zombiesValue.toString();
     ResetTimer();
+    clearInterval(aCInterval);
 }
 // Start timer with arguments from parameters.
 function StartTimerWArgs(initial, speed) {

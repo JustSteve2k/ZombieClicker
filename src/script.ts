@@ -34,6 +34,10 @@ document.getElementById("btnAddMoney640")?.addEventListener("click", () => {
 document.getElementById("btnAddMoney1280")?.addEventListener("click", () => {
   AddMoney(1280);
 });
+document.getElementById("btnCalcAutoClicks")?.addEventListener("click", () => {
+  CalcAutoClicksValue();
+});
+
 document.getElementById("btnModal")?.addEventListener("click", () => {
   ShowModal("test", "this is test content");
 });
@@ -61,7 +65,7 @@ function ManualClicks() {
 
   if (interval === 0) {
     StartTimer(1000);
-    StartAutoClickers();
+    StartACInterval();
   }
 
   if (clicks != null && zombies != null && currency != null) {
@@ -192,18 +196,20 @@ function UpdateUnitCost(unit: string): void {
 }
 
 // Need to adjust this to make the autoclicker minus from zombies.
-function UpdateAutoclicker(autoclicks: number) {
+function StartACInterval() {
   let currency = document.getElementById("currency")!;
   let zombies = document.getElementById("zombies")!;
   let zombiesValue = parseInt(zombies.innerText);
 
   let currencyValue = 0;
+  let autoclicks = CalcAutoClicksValue();
 
   // this needs ajusting.
-  clearInterval(interval);
+  clearInterval(aCInterval);
+  console.log(`aCInterval - ${aCInterval}`);
 
-  interval = setInterval(() => {
-    currencyValue = parseInt(currency!.innerText);
+  aCInterval = setInterval(() => {
+    currencyValue = parseInt(currency.innerText);
     currencyValue += autoclicks;
     zombiesValue -= autoclicks;
     currency!.innerText = currencyValue.toString();
@@ -213,7 +219,24 @@ function UpdateAutoclicker(autoclicks: number) {
   }, 1000);
 }
 
-function StartAutoClickers() {}
+function CalcAutoClicksValue(): number {
+  let values = GetValues();
+
+  let autoclicksValue =
+    values.infantrymen * 1 +
+    values.machineguns * 2 +
+    values.turrets * 4 +
+    values.cannons * 8 +
+    values.gunships * 16 +
+    values.battleships * 32 +
+    values.sateliteguns * 64 +
+    values.spaceships * 128; // Update with more units later.
+
+  console.log("Current Values");
+  console.log(values);
+  console.log(`Autoclicks - ${autoclicksValue}`);
+  return autoclicksValue;
+}
 
 // elem may not be HTML element so watch for that.
 function BuyBuff(elem: HTMLElement, cost: number) {
@@ -276,7 +299,8 @@ function CheckWinCondition(): void {
 function CheckLoseCondition(time: number): void {
   if (time === 0) {
     clearInterval(interval);
-    alert("You lost!");
+    clearInterval(aCInterval);
+    alert("You have been overrun with zombies!");
   }
 }
 
@@ -294,6 +318,7 @@ function SetLevel(levelValue: number): void {
   zombiesValue = levelValue * 10;
   zombies.innerText = zombiesValue.toString();
   ResetTimer();
+  clearInterval(aCInterval);
 }
 
 // Start timer with arguments from parameters.

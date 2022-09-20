@@ -6,6 +6,7 @@ export function ShowModal(header, content) {
     let modText = document.getElementById("modText");
     document.getElementById("modHeader").innerText = header;
     document.getElementById("modText").innerText = content;
+    /*Old style that allowed a transition to work. */
     // if (box != null && background != null) {
     //   if (box.style.height == "0px") {
     //     box.style.height = "200px";
