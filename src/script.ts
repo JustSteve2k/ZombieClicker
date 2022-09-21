@@ -197,11 +197,13 @@ function UpdateUnitCost(unit: string): void {
 
 // Need to adjust this to make the autoclicker minus from zombies.
 function StartACInterval() {
+  console.log("ac interval started");
   let currency = document.getElementById("currency")!;
   let zombies = document.getElementById("zombies")!;
-  let zombiesValue = parseInt(zombies.innerText);
 
+  let zombiesValue = 0;
   let currencyValue = 0;
+
   let autoclicks = CalcAutoClicksValue();
 
   // this needs ajusting.
@@ -210,11 +212,16 @@ function StartACInterval() {
 
   aCInterval = setInterval(() => {
     currencyValue = parseInt(currency.innerText);
+    zombiesValue = parseInt(zombies.innerText);
+
     currencyValue += autoclicks;
     zombiesValue -= autoclicks;
+
     currency!.innerText = currencyValue.toString();
     zombies!.innerText = zombiesValue.toString();
+
     CheckWinCondition();
+
     console.log(`Zombies Value - ${zombiesValue}`);
   }, 1000);
 }
