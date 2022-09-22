@@ -48,6 +48,13 @@ document.getElementById("btnModalNo")?.addEventListener("click", () => {
   CloseModal();
 });
 
+document.getElementById("btnSL6")?.addEventListener("click", () => {
+  SetLevel(6);
+});
+document.getElementById("btnSL12")?.addEventListener("click", () => {
+  SetLevel(12);
+});
+
 const realbutton = document.querySelectorAll(".realbutton");
 realbutton.forEach((sec) => {
   sec.addEventListener("click", () => {
@@ -323,18 +330,25 @@ function CheckLoseCondition(time: number): void {
 }
 
 function SetLevel(levelValue: number): void {
-  alert(`level set to ${levelValue}`);
+  const level = document.getElementById("level")!;
 
-  let level = document.getElementById("level")!;
+  if (level.innerText === levelValue.toString()) {
+    alert(`Its already level ${levelValue}`);
+    return;
+  }
+
+  alert(`Level set to ${levelValue}`);
+
   level.innerText = levelValue.toString();
 
-  let zombies = document.getElementById("zombies")!;
+  const zombies = document.getElementById("zombies")!;
   let zombiesValue = parseInt(zombies.innerText);
   let timer = document.getElementById("timer")!;
   timer.innerText = "10";
 
   zombiesValue = levelValue * 10;
   zombies.innerText = zombiesValue.toString();
+
   ResetTimer();
   clearInterval(aCInterval);
 }

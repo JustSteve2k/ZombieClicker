@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
@@ -43,6 +43,12 @@ let level = 1;
 });
 (_o = document.getElementById("btnModalNo")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
     CloseModal();
+});
+(_p = document.getElementById("btnSL6")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
+    SetLevel(6);
+});
+(_q = document.getElementById("btnSL12")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
+    SetLevel(12);
 });
 const realbutton = document.querySelectorAll(".realbutton");
 realbutton.forEach((sec) => {
@@ -272,10 +278,14 @@ function CheckLoseCondition(time) {
     }
 }
 function SetLevel(levelValue) {
-    alert(`level set to ${levelValue}`);
-    let level = document.getElementById("level");
+    const level = document.getElementById("level");
+    if (level.innerText === levelValue.toString()) {
+        alert(`Its already level ${levelValue}`);
+        return;
+    }
+    alert(`Level set to ${levelValue}`);
     level.innerText = levelValue.toString();
-    let zombies = document.getElementById("zombies");
+    const zombies = document.getElementById("zombies");
     let zombiesValue = parseInt(zombies.innerText);
     let timer = document.getElementById("timer");
     timer.innerText = "10";
