@@ -1,6 +1,6 @@
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
-import { GetValues } from "./values.js";
+import { GetValues, SetUnitCost } from "./values.js";
 
 let interval = 0;
 let aCInterval = 0;
@@ -13,7 +13,7 @@ document.getElementById("btnReset")?.addEventListener("click", () => {
   Reset();
 });
 document.getElementById("btnStartTimer")?.addEventListener("click", () => {
-  StartTimer(1000);
+  StartTimer(10);
 });
 document.getElementById("btnStopTimer")?.addEventListener("click", () => {
   StopTimer();
@@ -64,7 +64,7 @@ function ManualClicks() {
   let currency = document.getElementById("currency");
 
   if (interval === 0) {
-    StartTimer(1000);
+    StartTimer(10);
     StartACInterval();
   }
 
@@ -266,6 +266,7 @@ function BuyBuff(elem: HTMLElement, cost: number) {
 
 // Used in a button to reset all fields to starting points again.
 function Reset(): void {
+  console.log("resetting normal stuff");
   clearInterval(interval);
   count = 0;
   level = 1;
@@ -286,7 +287,17 @@ function Reset(): void {
   document.getElementById("battleships")!.innerText = "0";
   document.getElementById("sateliteguns")!.innerText = "0";
   document.getElementById("spaceships")!.innerText = "0";
+
   // Reset also needs to set the value of unit price to level 1 levels
+  console.log("resetting unit costs");
+  SetUnitCost("infantrymen", 10);
+  SetUnitCost("machineguns", 20);
+  SetUnitCost("turrets", 40);
+  SetUnitCost("cannons", 80);
+  SetUnitCost("gunships", 160);
+  SetUnitCost("battleships", 320);
+  SetUnitCost("sateliteguns", 640);
+  SetUnitCost("spaceships", 1280);
 }
 
 // Used to check if zombies are at 0
@@ -304,7 +315,7 @@ function CheckWinCondition(): void {
 }
 
 function CheckLoseCondition(time: number): void {
-  if (time === 0) {
+  if (time < 0) {
     clearInterval(interval);
     clearInterval(aCInterval);
     alert("You have been overrun with zombies!");
@@ -351,9 +362,12 @@ function StartTimer(speed: number) {
 
   //Upon starting of click start timer from initial going down to zero.
   interval = setInterval(() => {
-    time -= 1;
-    console.log(time);
-    timer.innerText = time.toString();
+    time -= 0.01;
+    let t = time.toFixed(2);
+
+    if (time % 1 === 0) console.log(t);
+
+    timer.innerText = t.toString();
     CheckLoseCondition(time);
   }, speed);
 }

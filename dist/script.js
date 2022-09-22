@@ -1,7 +1,7 @@
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
-import { GetValues } from "./values.js";
+import { GetValues, SetUnitCost } from "./values.js";
 let interval = 0;
 let aCInterval = 0;
 let count = 0;
@@ -12,7 +12,7 @@ let level = 1;
     Reset();
 });
 (_c = document.getElementById("btnStartTimer")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
-    StartTimer(1000);
+    StartTimer(10);
 });
 (_d = document.getElementById("btnStopTimer")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
     StopTimer();
@@ -58,7 +58,7 @@ function ManualClicks() {
     let zombies = document.getElementById("zombies");
     let currency = document.getElementById("currency");
     if (interval === 0) {
-        StartTimer(1000);
+        StartTimer(10);
         StartACInterval();
     }
     if (clicks != null && zombies != null && currency != null) {
@@ -224,6 +224,7 @@ function BuyBuff(elem, cost) {
 }
 // Used in a button to reset all fields to starting points again.
 function Reset() {
+    console.log("resetting normal stuff");
     clearInterval(interval);
     count = 0;
     level = 1;
@@ -242,6 +243,15 @@ function Reset() {
     document.getElementById("sateliteguns").innerText = "0";
     document.getElementById("spaceships").innerText = "0";
     // Reset also needs to set the value of unit price to level 1 levels
+    console.log("resetting unit costs");
+    SetUnitCost("infantrymen", 10);
+    SetUnitCost("machineguns", 20);
+    SetUnitCost("turrets", 40);
+    SetUnitCost("cannons", 80);
+    SetUnitCost("gunships", 160);
+    SetUnitCost("battleships", 320);
+    SetUnitCost("sateliteguns", 640);
+    SetUnitCost("spaceships", 1280);
 }
 // Used to check if zombies are at 0
 function CheckWinCondition() {
@@ -255,7 +265,7 @@ function CheckWinCondition() {
     }
 }
 function CheckLoseCondition(time) {
-    if (time === 0) {
+    if (time < 0) {
         clearInterval(interval);
         clearInterval(aCInterval);
         alert("You have been overrun with zombies!");
@@ -293,9 +303,11 @@ function StartTimer(speed) {
     console.log("Timer Started");
     //Upon starting of click start timer from initial going down to zero.
     interval = setInterval(() => {
-        time -= 1;
-        console.log(time);
-        timer.innerText = time.toString();
+        time -= 0.01;
+        let t = time.toFixed(2);
+        if (time % 1 === 0)
+            console.log(t);
+        timer.innerText = t.toString();
         CheckLoseCondition(time);
     }, speed);
 }
