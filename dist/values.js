@@ -12,6 +12,12 @@ export function GetValues() {
     values.spaceships = parseInt(document.getElementById("spaceships").innerText);
     return values;
 }
+export function SetUnitCost(unit, cost) {
+    const fullName = unit + "Cost";
+    const field = document.querySelector("." + fullName);
+    if (field != null)
+        field.innerText = cost.toString();
+}
 // Gets game stats.
 export function getStats() {
     const values = { level: 0, zombies: 0, currency: 0 };

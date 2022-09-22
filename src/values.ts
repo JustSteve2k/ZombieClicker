@@ -15,6 +15,13 @@ export function GetValues() {
   return values;
 }
 
+export function SetUnitCost(unit: string, cost: number) {
+  const fullName = unit + "Cost";
+  const field = document.querySelector("." + fullName) as HTMLElement | null;
+
+  if (field != null) field.innerText = cost.toString();
+}
+
 // Gets game stats.
 export function getStats() {
   const values = { level: 0, zombies: 0, currency: 0 };
