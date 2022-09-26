@@ -32,7 +32,8 @@ button:hover {
   color: black;
 }
 
-#main {
+/* Overall container */
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +67,7 @@ button:hover {
   background-color: rgba(80, 90, 70, 0.2);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
-  margin: 0rem 2.5%;
+  margin: 0rem 1.5%;
 }
 
 .buttonBackground {
@@ -185,6 +186,10 @@ button:hover {
 
 .hidden {
   height: 0;
+}
+
+.invisible {
+  display: none;
 }
 
 #tank {
