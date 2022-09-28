@@ -4,7 +4,6 @@ import { GetValues, SetUnitCost } from "./values.js";
 
 let interval = 0;
 let aCInterval = 0;
-let count = 0;
 let level = 1;
 
 // Event listeners
@@ -22,18 +21,14 @@ document.getElementById("btnResetTimer")?.addEventListener("click", () => {
   ResetTimer();
 });
 
-document.getElementById("btnAddMoney160")?.addEventListener("click", () => {
-  AddMoney(160);
+const moneyButton = document.querySelectorAll(".moneyButton");
+moneyButton.forEach((sec) => {
+  sec.addEventListener("click", () => {
+    let inside: number = parseInt(sec.innerHTML.substring(2));
+    AddMoney(inside);
+  });
 });
-document.getElementById("btnAddMoney320")?.addEventListener("click", () => {
-  AddMoney(320);
-});
-document.getElementById("btnAddMoney640")?.addEventListener("click", () => {
-  AddMoney(640);
-});
-document.getElementById("btnAddMoney1280")?.addEventListener("click", () => {
-  AddMoney(1280);
-});
+
 document.getElementById("btnCalcAutoClicks")?.addEventListener("click", () => {
   CalcAutoClicksValue();
 });
@@ -45,11 +40,12 @@ document.getElementById("btnModalYes")?.addEventListener("click", () => {
   CloseModal();
 });
 
-document.getElementById("btnSL6")?.addEventListener("click", () => {
-  SetLevel(6);
-});
-document.getElementById("btnSL12")?.addEventListener("click", () => {
-  SetLevel(12);
+const levelButton = document.querySelectorAll(".levelButton");
+levelButton.forEach((sec) => {
+  sec.addEventListener("click", () => {
+    let inside: number = parseInt(sec.innerHTML.substring(3));
+    SetLevel(inside);
+  });
 });
 
 const realbutton = document.querySelectorAll(".realbutton");
@@ -272,7 +268,6 @@ function BuyBuff(elem: HTMLElement, cost: number) {
 function Reset(): void {
   console.log("resetting normal stuff");
   clearInterval(interval);
-  count = 0;
   level = 1;
 
   document.getElementById("level")!.innerText = level.toString();

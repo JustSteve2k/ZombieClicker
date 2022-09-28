@@ -1,10 +1,9 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+var _a, _b, _c, _d, _e, _f, _g, _h;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
 let interval = 0;
 let aCInterval = 0;
-let count = 0;
 let level = 1;
 // Event listeners
 (_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", ManualClicks);
@@ -20,32 +19,28 @@ let level = 1;
 (_e = document.getElementById("btnResetTimer")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
     ResetTimer();
 });
-(_f = document.getElementById("btnAddMoney160")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", () => {
-    AddMoney(160);
+const moneyButton = document.querySelectorAll(".moneyButton");
+moneyButton.forEach((sec) => {
+    sec.addEventListener("click", () => {
+        let inside = parseInt(sec.innerHTML.substring(2));
+        AddMoney(inside);
+    });
 });
-(_g = document.getElementById("btnAddMoney320")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
-    AddMoney(320);
-});
-(_h = document.getElementById("btnAddMoney640")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
-    AddMoney(640);
-});
-(_j = document.getElementById("btnAddMoney1280")) === null || _j === void 0 ? void 0 : _j.addEventListener("click", () => {
-    AddMoney(1280);
-});
-(_k = document.getElementById("btnCalcAutoClicks")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+(_f = document.getElementById("btnCalcAutoClicks")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", () => {
     CalcAutoClicksValue();
 });
-(_l = document.getElementById("btnModal")) === null || _l === void 0 ? void 0 : _l.addEventListener("click", () => {
-    ShowModal("test", "this is test content");
+(_g = document.getElementById("btnModal")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
+    ShowModal("TEST", "this is test content for checking modal usage.");
 });
-(_m = document.getElementById("btnModalYes")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
+(_h = document.getElementById("btnModalYes")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
     CloseModal();
 });
-(_o = document.getElementById("btnSL6")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
-    SetLevel(6);
-});
-(_p = document.getElementById("btnSL12")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
-    SetLevel(12);
+const levelButton = document.querySelectorAll(".levelButton");
+levelButton.forEach((sec) => {
+    sec.addEventListener("click", () => {
+        let inside = parseInt(sec.innerHTML.substring(3));
+        SetLevel(inside);
+    });
 });
 const realbutton = document.querySelectorAll(".realbutton");
 realbutton.forEach((sec) => {
@@ -229,7 +224,6 @@ function BuyBuff(elem, cost) {
 function Reset() {
     console.log("resetting normal stuff");
     clearInterval(interval);
-    count = 0;
     level = 1;
     document.getElementById("level").innerText = level.toString();
     document.getElementById("zombies").innerText = "10";
