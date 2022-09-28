@@ -39,12 +39,9 @@ document.getElementById("btnCalcAutoClicks")?.addEventListener("click", () => {
 });
 
 document.getElementById("btnModal")?.addEventListener("click", () => {
-  ShowModal("test", "this is test content");
+  ShowModal("TEST", "this is test content for checking modal usage.");
 });
 document.getElementById("btnModalYes")?.addEventListener("click", () => {
-  CloseModal();
-});
-document.getElementById("btnModalNo")?.addEventListener("click", () => {
   CloseModal();
 });
 
@@ -313,7 +310,8 @@ function CheckWinCondition(): void {
   let zombiesValue = parseInt(zombies.innerText);
 
   if (zombiesValue <= 0) {
-    alert(`Congrats! You beat level ${level}`);
+    ShowModal("You win!", `Congrats for beating level ${level}`);
+    // alert(`Congrats! You beat level ${level}`);
     level++;
     SetLevel(level);
 
@@ -325,7 +323,7 @@ function CheckLoseCondition(time: number): void {
   if (time < 0) {
     clearInterval(interval);
     clearInterval(aCInterval);
-    alert("You have been overrun with zombies!");
+    ShowModal("YOU LOSE", "You have been overrun with zombies.  Please try again.");
   }
 }
 

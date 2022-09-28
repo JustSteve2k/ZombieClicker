@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
@@ -41,13 +41,10 @@ let level = 1;
 (_m = document.getElementById("btnModalYes")) === null || _m === void 0 ? void 0 : _m.addEventListener("click", () => {
     CloseModal();
 });
-(_o = document.getElementById("btnModalNo")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
-    CloseModal();
-});
-(_p = document.getElementById("btnSL6")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
+(_o = document.getElementById("btnSL6")) === null || _o === void 0 ? void 0 : _o.addEventListener("click", () => {
     SetLevel(6);
 });
-(_q = document.getElementById("btnSL12")) === null || _q === void 0 ? void 0 : _q.addEventListener("click", () => {
+(_p = document.getElementById("btnSL12")) === null || _p === void 0 ? void 0 : _p.addEventListener("click", () => {
     SetLevel(12);
 });
 const realbutton = document.querySelectorAll(".realbutton");
@@ -264,7 +261,8 @@ function CheckWinCondition() {
     let zombies = document.getElementById("zombies");
     let zombiesValue = parseInt(zombies.innerText);
     if (zombiesValue <= 0) {
-        alert(`Congrats! You beat level ${level}`);
+        ShowModal("You win!", `Congrats for beating level ${level}`);
+        // alert(`Congrats! You beat level ${level}`);
         level++;
         SetLevel(level);
         // Raise amount of zombies here.  Later to be done by a function.
@@ -274,7 +272,7 @@ function CheckLoseCondition(time) {
     if (time < 0) {
         clearInterval(interval);
         clearInterval(aCInterval);
-        alert("You have been overrun with zombies!");
+        ShowModal("YOU LOSE", "You have been overrun with zombies.  Please try again.");
     }
 }
 function SetLevel(levelValue) {
