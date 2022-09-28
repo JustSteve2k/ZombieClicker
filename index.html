@@ -12,12 +12,18 @@
   </head>
   <body>
     <div id="main" class="container">
+      
+      <!-- Main Clicker Area -->
+
       <div id="left" class="box">
         <h2>Clicker</h2>
         <div class="buttonBackground">
           <div id="tank"></div>
         </div>
       </div>
+      
+      <!-- Purchase Area -->
+
       <div id="middle" class="box">
         <h2>Purchase Units</h2>
         <div class="upperButtonArea buttonBackground">
@@ -44,13 +50,17 @@
         <div id="evenLowerButtons" class="evenLowerButtons buttonBackground">
           <button id="btnReset">Reset All</button>
           <button id="btnModal">Modal</button>
-          <button id="btnSL6">SL 6</button>
-          <button id="btnSL12">SL 12</button>
+          <button id="btnSL6" class="levelButton">SL 6</button>
+          <button id="btnSL12" class="levelButton">SL 12</button>
+          <button id="btnSL24" class="levelButton">SL 24</button>
+          <button id="btnSL48" class="levelButton">SL 48</button>
           <button id="btnStartTimer">Start Timer</button>
           <button id="btnStopTimer">Stop Timer</button>
           <button id="btnResetTimer">Reset Timer</button>
         </div>
       </div>
+      
+      <!-- GameStats -->
 
       <div id="right" class="box">
         <h2>GameStats</h2>
@@ -96,28 +106,32 @@
         </div>
       </div>
 
+      <!-- Dev Area -->
+  
       <div id="dev" class="box">
         <h2>Dev Box</h2>
         <h2>Dev Money</h2>
         <div class="lowerbuttons buttonBackground">
-          <button id="btnAddMoney160">+$160</button>
-          <button id="btnAddMoney320">+$320</button>
-          <button id="btnAddMoney640">+$640</button>
-          <button id="btnAddMoney1280">+$1280</button>
-          <button id="btnCalcAutoClicks">Show AutoClicks</button>
+          <button id="btnAddMoney160" class="moneyButton">+$160</button>
+          <button id="btnAddMoney320" class="moneyButton">+$320</button>
+          <button id="btnAddMoney640" class="moneyButton">+$640</button>
+          <button id="btnAddMoney1280" class="moneyButton">+$1280</button>
+          <button id="btnAddMoney2560" class="moneyButton">+$2560</button>
         </div>
+        <h2>Dev Controls</h2>
+        <div><button id="btnCalcAutoClicks">Show AutoClicks</button></div>
       </div>
       <div id="achievements" class="box">Achievements</div>
+
       <!-- Modal -->
+
       <div id="modalBackground" class="modalBackground hidden">
         <div id="modalContent" class="modalContent hidden">
-          <p id="modalClose" class="modalClose">X</p>
           <h2 id="modHeader">Header</h2>
           <p id="modText">test</p>
           <button id="btnModalYes">Ok</button>
         </div>
       </div>
-    </div>
 
     <script type="module" src="./dist/script.js"></script>
   </body>
