@@ -26,38 +26,25 @@
 
       <div id="middle" class="box">
         <h2>Purchase Units</h2>
-        <div class="upperButtonArea buttonBackground">
-          <button id="btnPurchaseUnit1" class="realbutton">Infantrymen $<span class="infantrymenCost">10</span></button>
-          <button id="btnPurchaseUnit2" class="realbutton">Machineguns $<span class="machinegunsCost">20</span></button>
-          <button id="btnPurchaseUnit3" class="realbutton">Turrets $<span class="turretsCost">40</span></button>
-          <button id="btnPurchaseUnit4" class="realbutton">Cannons $<span class="cannonsCost">80</span></button>
-          <button id="btnPurchaseUnit5" class="realbutton">Gunships $<span class="gunshipsCost">160</span></button>
-          <button id="btnPurchaseUnit6" class="realbutton">Battleships $<span class="battleshipsCost">320</span></button>
-          <button id="btnPurchaseUnit7" class="realbutton">Sateliteguns $<span class="satelitegunsCost">640</span></button>
-          <button id="btnPurchaseUnit8" class="realbutton">Spaceships $<span class="spaceshipsCost">1280</span></button>
+        <div class="purchaseArea buttonBackground">
+          <button id="btnPurchaseUnit1" class="realbutton">Infantrymen<br>$<span class="infantrymenCost">10</span></button>
+          <button id="btnPurchaseUnit2" class="realbutton">Machineguns<br>$<span class="machinegunsCost">20</span></button>
+          <button id="btnPurchaseUnit3" class="realbutton">Turrets<br>$<span class="turretsCost">40</span></button>
+          <button id="btnPurchaseUnit4" class="realbutton">Cannons<br>$<span class="cannonsCost">80</span></button>
+          <button id="btnPurchaseUnit5" class="realbutton">Gunships<br>$<span class="gunshipsCost">160</span></button>
+          <button id="btnPurchaseUnit6" class="realbutton">Battleships<br>$<span class="battleshipsCost">320</span></button>
+          <button id="btnPurchaseUnit7" class="realbutton">Sateliteguns<br>$<span class="satelitegunsCost">640</span></button>
+          <button id="btnPurchaseUnit8" class="realbutton">Spaceships<br>$<span class="spaceshipsCost">1280</span></button>
         </div>
-        <!--
+        
         <h2>Buffs</h2>
-        <div class="middleButtonArea">
+        <div class="buffsArea buttonBackground">
           <button class="buffButton" onclick="BuyBuff(this,20)">Buff 1</button>
           <button class="buffButton" onclick="ShowModal('hmm')">Buff 2</button>
           <button class="buffButton" onclick="ShowModal('it works!')">Buff 3</button>
           <button class="buffButton" onclick="ShowModal('Buff 4')">Buff 4</button>
         </div>
-        -->
-
-        <h2>Buttons</h2>
-        <div id="evenLowerButtons" class="evenLowerButtons buttonBackground">
-          <button id="btnReset">Reset All</button>
-          <button id="btnModal">Modal</button>
-          <button id="btnSL6" class="levelButton">SL 6</button>
-          <button id="btnSL12" class="levelButton">SL 12</button>
-          <button id="btnSL24" class="levelButton">SL 24</button>
-          <button id="btnSL48" class="levelButton">SL 48</button>
-          <button id="btnStartTimer">Start Timer</button>
-          <button id="btnStopTimer">Stop Timer</button>
-          <button id="btnResetTimer">Reset Timer</button>
-        </div>
+        
       </div>
       
       <!-- GameStats -->
@@ -71,7 +58,7 @@
           </div>
           <div class="stat">
             <h2>Zombies</h2>
-            <h3><span id="zombies">10</span></h3>
+            <h3><span id="zombies">20</span></h3>
           </div>
           <div class="stat">
             <h2>Currency</h2>
@@ -109,9 +96,8 @@
       <!-- Dev Area -->
   
       <div id="dev" class="box">
-        <h2>Dev Box</h2>
-        <h2>Dev Money</h2>
-        <div class="lowerbuttons buttonBackground">
+         <h2>Dev Money</h2>
+        <div class="devMoneyArea buttonBackground">
           <button id="btnAddMoney160" class="moneyButton">+$160</button>
           <button id="btnAddMoney320" class="moneyButton">+$320</button>
           <button id="btnAddMoney640" class="moneyButton">+$640</button>
@@ -119,8 +105,20 @@
           <button id="btnAddMoney2560" class="moneyButton">+$2560</button>
         </div>
         <h2>Dev Controls</h2>
-        <div><button id="btnCalcAutoClicks">Show AutoClicks</button></div>
+        <div id="devButtonArea" class="devButtonArea buttonBackground">
+          <button id="btnReset">Reset All</button>
+          <button id="btnModal">Modal</button>
+          <button id="btnSL6" class="levelButton">SL 6</button>
+          <button id="btnSL12" class="levelButton">SL 12</button>
+          <button id="btnSL24" class="levelButton">SL 24</button>
+          <button id="btnSL48" class="levelButton">SL 48</button>
+          <button id="btnStartTimer">Start Timer</button>
+          <button id="btnStopTimer">Stop Timer</button>
+          <button id="btnResetTimer">Reset Timer</button>
+          <button id="btnCalcAutoClicks">Show AutoClicks</button>
+        </div>
       </div>
+           
       <div id="achievements" class="box">Achievements</div>
 
       <!-- Modal -->
