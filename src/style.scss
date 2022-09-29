@@ -42,6 +42,7 @@ button {
   background-color: black;
   color: white;
   margin: 10vh 5%;
+  border: 1px solid white;
 }
 
 /* Main four boxes */
@@ -85,28 +86,29 @@ button {
   border-radius: 12px;
 }
 
-.upperButtonArea {
+.purchaseArea {
   height: 30%;
   background-color: red;
 
   button {
-    width: 7rem;
+    width: 8rem;
   }
 }
 
-.middleButtonArea {
-  height: 30%;
+.buffsArea {
+  height: 15%;
+  background-color: purple;
 
   button {
-    width: 5rem;
+    width: 8rem;
   }
 }
 
-.lowerbuttons {
+.devMoneyArea {
   background-color: blue;
 }
 
-.evenLowerButtons {
+.devButtonArea {
   background-color: orange;
 }
 

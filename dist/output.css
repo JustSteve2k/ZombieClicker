@@ -41,6 +41,7 @@ button:hover {
   background-color: black;
   color: white;
   margin: 10vh 5%;
+  border: 1px solid white;
 }
 
 /* Main four boxes */
@@ -83,26 +84,27 @@ button:hover {
   border-radius: 12px;
 }
 
-.upperButtonArea {
+.purchaseArea {
   height: 30%;
   background-color: red;
 }
-.upperButtonArea button {
-  width: 7rem;
+.purchaseArea button {
+  width: 8rem;
 }
 
-.middleButtonArea {
-  height: 30%;
+.buffsArea {
+  height: 15%;
+  background-color: purple;
 }
-.middleButtonArea button {
-  width: 5rem;
+.buffsArea button {
+  width: 8rem;
 }
 
-.lowerbuttons {
+.devMoneyArea {
   background-color: blue;
 }
 
-.evenLowerButtons {
+.devButtonArea {
   background-color: orange;
 }
 
