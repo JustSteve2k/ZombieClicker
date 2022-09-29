@@ -2,8 +2,8 @@ import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
 
-let interval = 0;
-let aCInterval = 0;
+let interval = 0; // Timer Interval.  Should probably be named better.
+let aCInterval = 0; // Autoclicker Interval
 let level = 1;
 
 // Event listeners
@@ -33,9 +33,6 @@ document.getElementById("btnCalcAutoClicks")?.addEventListener("click", () => {
   CalcAutoClicksValue();
 });
 
-document.getElementById("btnModal")?.addEventListener("click", () => {
-  ShowModal("TEST", "this is test content for checking modal usage.");
-});
 document.getElementById("btnModalYes")?.addEventListener("click", () => {
   CloseModal();
 });
@@ -268,10 +265,10 @@ function BuyBuff(elem: HTMLElement, cost: number) {
 function Reset(): void {
   console.log("resetting normal stuff");
   clearInterval(interval);
-  level = 1;
+  // level = 1;
+  SetLevel(1);
 
   document.getElementById("level")!.innerText = level.toString();
-  document.getElementById("zombies")!.innerText = "10";
   document.getElementById("currency")!.innerText = "0";
   document.getElementById("timer")!.innerText = "10";
 
@@ -330,8 +327,6 @@ function SetLevel(levelValue: number): void {
     return;
   }
 
-  alert(`Level set to ${levelValue}`);
-
   level.innerText = levelValue.toString();
 
   const zombies = document.getElementById("zombies")!;
@@ -339,7 +334,7 @@ function SetLevel(levelValue: number): void {
   let timer = document.getElementById("timer")!;
   timer.innerText = "10";
 
-  zombiesValue = levelValue * 10;
+  zombiesValue = levelValue * 20;
   zombies.innerText = zombiesValue.toString();
 
   ResetTimer();
