@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g;
+var _a, _b, _c, _d, _e, _f, _g, _h;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
@@ -31,6 +31,9 @@ moneyButton.forEach((sec) => {
 });
 (_g = document.getElementById("btnModalYes")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
     CloseModal();
+});
+(_h = document.getElementById("btnModal")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
+    ShowModal("TEST MODAL", "This is used to teset the modal.");
 });
 const levelButton = document.querySelectorAll(".levelButton");
 levelButton.forEach((sec) => {

@@ -37,6 +37,10 @@ document.getElementById("btnModalYes")?.addEventListener("click", () => {
   CloseModal();
 });
 
+document.getElementById("btnModal")?.addEventListener("click", () => {
+  ShowModal("TEST MODAL", "This is used to teset the modal.");
+});
+
 const levelButton = document.querySelectorAll(".levelButton");
 levelButton.forEach((sec) => {
   sec.addEventListener("click", () => {
