@@ -19,7 +19,7 @@ p {
 
 button {
   width: 30%;
-  height: 2rem;
+  height: 1.5rem;
   background-color: rgb(38, 161, 4);
   color: white;
   box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.4);
@@ -32,6 +32,15 @@ button {
   }
 }
 
+/* Title */
+.gameTitle {
+  text-align: center;
+  color: white;
+  border: 1px solid white;
+  margin: 1rem auto 0rem;
+  width: 60%;
+}
+
 /* Overall container */
 .container {
   display: flex;
@@ -41,7 +50,7 @@ button {
   height: 80vh;
   background-color: black;
   color: white;
-  margin: 10vh 5%;
+  margin: 3vh 5% 1vh;
   border: 1px solid white;
 }
 
@@ -69,10 +78,6 @@ button {
   box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.2);
   border-radius: 12px;
   margin: 0rem 1.5%;
-
-  button {
-    margin: 0.5rem auto;
-  }
 }
 
 .buttonBackground {
@@ -84,19 +89,24 @@ button {
   margin: 1rem auto;
   border: 1px solid white;
   border-radius: 12px;
+
+  button {
+    margin: 0.5rem auto;
+  }
 }
 
 .purchaseArea {
-  height: 30%;
+  // height: 30%;
   background-color: red;
 
   button {
+    height: 2rem;
     width: 8rem;
   }
 }
 
 .buffsArea {
-  height: 15%;
+  // height: 15%;
   background-color: purple;
 
   button {
@@ -110,6 +120,9 @@ button {
 
 .devButtonArea {
   background-color: orange;
+  button {
+    height: 2rem;
+  }
 }
 
 .unitCounts {
@@ -159,7 +172,7 @@ button {
   z-index: 1;
   height: 100vh;
   width: 100%;
-  background-color: rgb(0, 0, 0, 0.4);
+  background-color: rgb(0, 0, 0, 0.8);
   transition: 0.5s;
 }
 
@@ -170,7 +183,7 @@ button {
   z-index: 2;
   height: 10rem;
   width: 20vw;
-  background-color: rgb(80, 90, 70);
+  background-color: rgb(105, 165, 173);
   border-radius: 12px;
   top: 30%;
   left: 40%;
