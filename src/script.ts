@@ -1,6 +1,7 @@
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
+import { Tower } from "./tower.js";
 
 let interval = 0; // Timer Interval.  Should probably be named better.
 let aCInterval = 0; // Autoclicker Interval
@@ -31,6 +32,10 @@ moneyButton.forEach((sec) => {
 
 document.getElementById("btnCalcAutoClicks")?.addEventListener("click", () => {
   CalcAutoClicksValue();
+});
+
+document.getElementById("btnTowerClassTestButton")?.addEventListener("click", () => {
+  Tower.testButton();
 });
 
 document.getElementById("btnModalYes")?.addEventListener("click", () => {

@@ -1,7 +1,8 @@
-var _a, _b, _c, _d, _e, _f, _g, _h;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
+import { Tower } from "./tower.js";
 let interval = 0; // Timer Interval.  Should probably be named better.
 let aCInterval = 0; // Autoclicker Interval
 let level = 1;
@@ -29,10 +30,13 @@ moneyButton.forEach((sec) => {
 (_f = document.getElementById("btnCalcAutoClicks")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", () => {
     CalcAutoClicksValue();
 });
-(_g = document.getElementById("btnModalYes")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
+(_g = document.getElementById("btnTowerClassTestButton")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
+    Tower.testButton();
+});
+(_h = document.getElementById("btnModalYes")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
     CloseModal();
 });
-(_h = document.getElementById("btnModal")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
+(_j = document.getElementById("btnModal")) === null || _j === void 0 ? void 0 : _j.addEventListener("click", () => {
     ShowModal("TEST MODAL", "This is used to teset the modal.");
 });
 const levelButton = document.querySelectorAll(".levelButton");
