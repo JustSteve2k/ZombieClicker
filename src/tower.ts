@@ -1,7 +1,7 @@
-export default class Tower {
+export class Tower {
   public health: number;
   public id: number;
-  private defence: number;
+  private defence: number = 0;
 
   // Future things to add: innate attack.  Maintenance cost?
 
@@ -21,5 +21,9 @@ export default class Tower {
   outputInfo() {
     console.log(`${this.id} - Tower ID`);
     console.log(`${this.health} - Tower Health`);
+  }
+
+  static testButton() {
+    console.log("works!");
   }
 }
