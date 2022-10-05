@@ -63,6 +63,13 @@ realbutton.forEach((sec) => {
   });
 });
 
+document.getElementById("tank")?.addEventListener("click", (element) => {
+  let el = document.getElementById("tank")!;
+  let num = parseInt(el?.innerText);
+  num--;
+  el.innerText = num.toString();
+});
+
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
   let clicks = document.getElementById("clicks");

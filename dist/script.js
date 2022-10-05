@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
@@ -53,6 +53,12 @@ realbutton.forEach((sec) => {
         unit = unit.split(" ")[0].toLowerCase();
         PurchaseUnit(unit);
     });
+});
+(_k = document.getElementById("tank")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", (element) => {
+    let el = document.getElementById("tank");
+    let num = parseInt(el === null || el === void 0 ? void 0 : el.innerText);
+    num--;
+    el.innerText = num.toString();
 });
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
