@@ -50,16 +50,19 @@ const realbutton = document.querySelectorAll(".realbutton");
 realbutton.forEach((sec) => {
     sec.addEventListener("click", () => {
         let unit = sec.innerHTML;
-        unit = unit.split(" ")[0].toLowerCase();
+        unit = unit.split("<br>")[0].toLowerCase();
         PurchaseUnit(unit);
     });
 });
-(_k = document.getElementById("tank")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", (element) => {
-    let el = document.getElementById("tank");
-    let num = parseInt(el === null || el === void 0 ? void 0 : el.innerText);
-    num--;
-    el.innerText = num.toString();
+(_k = document.getElementById("btnSaveProgress")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+    alert("Save Not Done yet!");
 });
+// document.getElementById("tank")?.addEventListener("click", (element) => {
+//   let el = document.getElementById("tank")!;
+//   let num = parseInt(el?.innerText);
+//   num--;
+//   el.innerText = num.toString();
+// });
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
     let clicks = document.getElementById("clicks");
@@ -96,6 +99,7 @@ function PurchaseUnit(unit) {
         unitCost = parseInt(document.getElementsByClassName(unit + "Cost")[0].innerHTML);
         // Checks to see if you have enough currency to purchase unit.  If so, subtracts costs then updates new unit price.
         if (currencyValue >= unitCost) {
+            ShowModal(`${unit} Purchased!`, "Unit loaded!");
             amountOfUnitsValue++;
             currencyValue -= unitCost;
             amountOfUnits.innerText = amountOfUnitsValue.toString();
@@ -145,7 +149,7 @@ function UpdateUnitCost(unit) {
     let amountOfUnits = document.getElementById(unit);
     if (amountOfUnits != null) {
         let amountOfUnitsValue = parseInt(amountOfUnits.innerText);
-        let difficultyModifier = 1.2; // Formula to determine scaling needs to be reworked
+        let difficultyModifier = 1.4; // Formula to determine scaling needs to be reworked
         switch (unit) {
             case "infantrymen":
                 unitCost = 10 + Math.pow(1 + amountOfUnitsValue, difficultyModifier);
@@ -235,7 +239,7 @@ function Reset() {
     console.log("resetting normal stuff");
     clearInterval(interval);
     // level = 1;
-    SetLevel(1);
+    SetLevel(1, true);
     document.getElementById("level").innerText = level.toString();
     document.getElementById("currency").innerText = "0";
     document.getElementById("timer").innerText = "10";
@@ -249,6 +253,7 @@ function Reset() {
     document.getElementById("battleships").innerText = "0";
     document.getElementById("sateliteguns").innerText = "0";
     document.getElementById("spaceships").innerText = "0";
+    document.getElementById("zombies").innerText = "20";
     // Reset also needs to set the value of unit price to level 1 levels
     console.log("resetting unit costs");
     SetUnitCost("infantrymen", 10);
@@ -279,9 +284,9 @@ function CheckLoseCondition(time) {
         ShowModal("YOU LOSE", "You have been overrun with zombies.  Please try again.");
     }
 }
-function SetLevel(levelValue) {
+function SetLevel(levelValue, force) {
     const level = document.getElementById("level");
-    if (level.innerText === levelValue.toString()) {
+    if (level.innerText === levelValue.toString() && !force) {
         alert(`Its already level ${levelValue}`);
         return;
     }

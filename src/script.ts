@@ -58,17 +58,21 @@ const realbutton = document.querySelectorAll(".realbutton");
 realbutton.forEach((sec) => {
   sec.addEventListener("click", () => {
     let unit = sec.innerHTML;
-    unit = unit.split(" ")[0].toLowerCase();
+    unit = unit.split("<br>")[0].toLowerCase();
     PurchaseUnit(unit);
   });
 });
 
-document.getElementById("tank")?.addEventListener("click", (element) => {
-  let el = document.getElementById("tank")!;
-  let num = parseInt(el?.innerText);
-  num--;
-  el.innerText = num.toString();
+document.getElementById("btnSaveProgress")?.addEventListener("click", () => {
+  alert("Save Not Done yet!");
 });
+
+// document.getElementById("tank")?.addEventListener("click", (element) => {
+//   let el = document.getElementById("tank")!;
+//   let num = parseInt(el?.innerText);
+//   num--;
+//   el.innerText = num.toString();
+// });
 
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
@@ -115,6 +119,7 @@ function PurchaseUnit(unit: string) {
 
     // Checks to see if you have enough currency to purchase unit.  If so, subtracts costs then updates new unit price.
     if (currencyValue >= unitCost) {
+      ShowModal(`${unit} Purchased!`, "Unit loaded!");
       amountOfUnitsValue++;
       currencyValue -= unitCost;
 
@@ -174,7 +179,7 @@ function UpdateUnitCost(unit: string): void {
   let amountOfUnits = document.getElementById(unit);
   if (amountOfUnits != null) {
     let amountOfUnitsValue = parseInt(amountOfUnits.innerText);
-    let difficultyModifier = 1.2; // Formula to determine scaling needs to be reworked
+    let difficultyModifier = 1.4; // Formula to determine scaling needs to be reworked
 
     switch (unit) {
       case "infantrymen":
@@ -282,7 +287,7 @@ function Reset(): void {
   console.log("resetting normal stuff");
   clearInterval(interval);
   // level = 1;
-  SetLevel(1);
+  SetLevel(1, true);
 
   document.getElementById("level")!.innerText = level.toString();
   document.getElementById("currency")!.innerText = "0";
@@ -299,6 +304,8 @@ function Reset(): void {
   document.getElementById("battleships")!.innerText = "0";
   document.getElementById("sateliteguns")!.innerText = "0";
   document.getElementById("spaceships")!.innerText = "0";
+
+  document.getElementById("zombies")!.innerText = "20";
 
   // Reset also needs to set the value of unit price to level 1 levels
   console.log("resetting unit costs");
@@ -335,10 +342,10 @@ function CheckLoseCondition(time: number): void {
   }
 }
 
-function SetLevel(levelValue: number): void {
+function SetLevel(levelValue: number, force?: boolean): void {
   const level = document.getElementById("level")!;
 
-  if (level.innerText === levelValue.toString()) {
+  if (level.innerText === levelValue.toString() && !force) {
     alert(`Its already level ${levelValue}`);
     return;
   }
