@@ -7,72 +7,73 @@ let interval = 0; // Timer Interval.  Should probably be named better.
 let aCInterval = 0; // Autoclicker Interval
 let level = 1;
 
-// Event listeners
-document.getElementById("tank")?.addEventListener("click", ManualClicks);
-document.getElementById("btnReset")?.addEventListener("click", () => {
-  Reset();
-});
-document.getElementById("btnStartTimer")?.addEventListener("click", () => {
-  StartTimer(10);
-});
-document.getElementById("btnStopTimer")?.addEventListener("click", () => {
-  StopTimer();
-});
-document.getElementById("btnResetTimer")?.addEventListener("click", () => {
-  ResetTimer();
-});
+Startup();
 
-const moneyButton = document.querySelectorAll(".moneyButton");
-moneyButton.forEach((sec) => {
-  sec.addEventListener("click", () => {
-    let inside: number = parseInt(sec.innerHTML.substring(2));
-    AddMoney(inside);
+function Startup(): void {
+  // Event listeners
+  document.getElementById("tank")?.addEventListener("click", ManualClicks);
+  document.getElementById("btnReset")?.addEventListener("click", () => {
+    Reset();
   });
-});
-
-document.getElementById("btnCalcAutoClicks")?.addEventListener("click", () => {
-  CalcAutoClicksValue();
-});
-
-document.getElementById("btnTowerClassTestButton")?.addEventListener("click", () => {
-  Tower.testButton();
-});
-
-document.getElementById("btnModalYes")?.addEventListener("click", () => {
-  CloseModal();
-});
-
-document.getElementById("btnModal")?.addEventListener("click", () => {
-  ShowModal("TEST MODAL", "This is used to teset the modal.");
-});
-
-const levelButton = document.querySelectorAll(".levelButton");
-levelButton.forEach((sec) => {
-  sec.addEventListener("click", () => {
-    let inside: number = parseInt(sec.innerHTML.substring(3));
-    SetLevel(inside);
+  document.getElementById("btnStartTimer")?.addEventListener("click", () => {
+    StartTimer(10);
   });
-});
-
-const realbutton = document.querySelectorAll(".realbutton");
-realbutton.forEach((sec) => {
-  sec.addEventListener("click", () => {
-    let unit = sec.innerHTML;
-    unit = unit.split("<br>")[0].toLowerCase();
-    PurchaseUnit(unit);
+  document.getElementById("btnStopTimer")?.addEventListener("click", () => {
+    StopTimer();
   });
-});
+  document.getElementById("btnResetTimer")?.addEventListener("click", () => {
+    ResetTimer();
+  });
 
-document.getElementById("btnSaveProgress")?.addEventListener("click", () => {
-  alert("Save Not Done yet!");
-});
+  const moneyButton = document.querySelectorAll(".moneyButton");
+  moneyButton.forEach((sec) => {
+    sec.addEventListener("click", () => {
+      let inside: number = parseInt(sec.innerHTML.substring(2));
+      AddMoney(inside);
+    });
+  });
 
-// document.getElementById("tank")?.addEventListener("click", (element) => {
-//   let el = document.getElementById("tank")!;
-//   let num = parseInt(el?.innerText);
-//   num--;
-//   el.innerText = num.toString();
-// });
+  document
+    .getElementById("btnCalcAutoClicks")
+    ?.addEventListener("click", () => {
+      CalcAutoClicksValue();
+    });
+
+  document
+    .getElementById("btnTowerClassTestButton")
+    ?.addEventListener("click", () => {
+      Tower.testButton();
+    });
+
+  document.getElementById("btnModalYes")?.addEventListener("click", () => {
+    CloseModal();
+  });
+
+  document.getElementById("btnModal")?.addEventListener("click", () => {
+    ShowModal("TEST MODAL", "This is used to teset the modal.");
+  });
+
+  const levelButton = document.querySelectorAll(".levelButton");
+  levelButton.forEach((sec) => {
+    sec.addEventListener("click", () => {
+      let inside: number = parseInt(sec.innerHTML.substring(3));
+      SetLevel(inside);
+    });
+  });
+
+  const realbutton = document.querySelectorAll(".realbutton");
+  realbutton.forEach((sec) => {
+    sec.addEventListener("click", () => {
+      let unit = sec.innerHTML;
+      unit = unit.split("<br>")[0].toLowerCase();
+      PurchaseUnit(unit);
+    });
+  });
+
+  document.getElementById("btnSaveProgress")?.addEventListener("click", () => {
+    alert("Save Not Done yet!");
+  });
+}
 
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
@@ -115,7 +116,9 @@ function PurchaseUnit(unit: string) {
 
     // Determines unit cost.
     console.log(unit);
-    unitCost = parseInt(document.getElementsByClassName(unit + "Cost")[0].innerHTML);
+    unitCost = parseInt(
+      document.getElementsByClassName(unit + "Cost")[0].innerHTML
+    );
 
     // Checks to see if you have enough currency to purchase unit.  If so, subtracts costs then updates new unit price.
     if (currencyValue >= unitCost) {
@@ -204,12 +207,14 @@ function UpdateUnitCost(unit: string): void {
         unitCost = 640 + Math.pow(64 + amountOfUnitsValue, difficultyModifier);
         break;
       case "spaceships":
-        unitCost = 1280 + Math.pow(128 + amountOfUnitsValue, difficultyModifier);
+        unitCost =
+          1280 + Math.pow(128 + amountOfUnitsValue, difficultyModifier);
         break;
     }
 
     unitCost = Math.floor(unitCost);
-    document.getElementsByClassName(unit + "Cost")[0].innerHTML = unitCost.toString();
+    document.getElementsByClassName(unit + "Cost")[0].innerHTML =
+      unitCost.toString();
   }
 }
 
@@ -338,7 +343,10 @@ function CheckLoseCondition(time: number): void {
   if (time < 0) {
     clearInterval(interval);
     clearInterval(aCInterval);
-    ShowModal("YOU LOSE", "You have been overrun with zombies.  Please try again.");
+    ShowModal(
+      "YOU LOSE",
+      "You have been overrun with zombies.  Please try again."
+    );
   }
 }
 

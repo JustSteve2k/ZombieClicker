@@ -1,4 +1,3 @@
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 import { AddMoney } from "./dev.js";
 import { ShowModal, CloseModal } from "./visual.js";
 import { GetValues, SetUnitCost } from "./values.js";
@@ -6,63 +5,63 @@ import { Tower } from "./tower.js";
 let interval = 0; // Timer Interval.  Should probably be named better.
 let aCInterval = 0; // Autoclicker Interval
 let level = 1;
-// Event listeners
-(_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", ManualClicks);
-(_b = document.getElementById("btnReset")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
-    Reset();
-});
-(_c = document.getElementById("btnStartTimer")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
-    StartTimer(10);
-});
-(_d = document.getElementById("btnStopTimer")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
-    StopTimer();
-});
-(_e = document.getElementById("btnResetTimer")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
-    ResetTimer();
-});
-const moneyButton = document.querySelectorAll(".moneyButton");
-moneyButton.forEach((sec) => {
-    sec.addEventListener("click", () => {
-        let inside = parseInt(sec.innerHTML.substring(2));
-        AddMoney(inside);
+Startup();
+function Startup() {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+    // Event listeners
+    (_a = document.getElementById("tank")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", ManualClicks);
+    (_b = document.getElementById("btnReset")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
+        Reset();
     });
-});
-(_f = document.getElementById("btnCalcAutoClicks")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", () => {
-    CalcAutoClicksValue();
-});
-(_g = document.getElementById("btnTowerClassTestButton")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
-    Tower.testButton();
-});
-(_h = document.getElementById("btnModalYes")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
-    CloseModal();
-});
-(_j = document.getElementById("btnModal")) === null || _j === void 0 ? void 0 : _j.addEventListener("click", () => {
-    ShowModal("TEST MODAL", "This is used to teset the modal.");
-});
-const levelButton = document.querySelectorAll(".levelButton");
-levelButton.forEach((sec) => {
-    sec.addEventListener("click", () => {
-        let inside = parseInt(sec.innerHTML.substring(3));
-        SetLevel(inside);
+    (_c = document.getElementById("btnStartTimer")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
+        StartTimer(10);
     });
-});
-const realbutton = document.querySelectorAll(".realbutton");
-realbutton.forEach((sec) => {
-    sec.addEventListener("click", () => {
-        let unit = sec.innerHTML;
-        unit = unit.split("<br>")[0].toLowerCase();
-        PurchaseUnit(unit);
+    (_d = document.getElementById("btnStopTimer")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
+        StopTimer();
     });
-});
-(_k = document.getElementById("btnSaveProgress")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
-    alert("Save Not Done yet!");
-});
-// document.getElementById("tank")?.addEventListener("click", (element) => {
-//   let el = document.getElementById("tank")!;
-//   let num = parseInt(el?.innerText);
-//   num--;
-//   el.innerText = num.toString();
-// });
+    (_e = document.getElementById("btnResetTimer")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
+        ResetTimer();
+    });
+    const moneyButton = document.querySelectorAll(".moneyButton");
+    moneyButton.forEach((sec) => {
+        sec.addEventListener("click", () => {
+            let inside = parseInt(sec.innerHTML.substring(2));
+            AddMoney(inside);
+        });
+    });
+    (_f = document
+        .getElementById("btnCalcAutoClicks")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", () => {
+        CalcAutoClicksValue();
+    });
+    (_g = document
+        .getElementById("btnTowerClassTestButton")) === null || _g === void 0 ? void 0 : _g.addEventListener("click", () => {
+        Tower.testButton();
+    });
+    (_h = document.getElementById("btnModalYes")) === null || _h === void 0 ? void 0 : _h.addEventListener("click", () => {
+        CloseModal();
+    });
+    (_j = document.getElementById("btnModal")) === null || _j === void 0 ? void 0 : _j.addEventListener("click", () => {
+        ShowModal("TEST MODAL", "This is used to teset the modal.");
+    });
+    const levelButton = document.querySelectorAll(".levelButton");
+    levelButton.forEach((sec) => {
+        sec.addEventListener("click", () => {
+            let inside = parseInt(sec.innerHTML.substring(3));
+            SetLevel(inside);
+        });
+    });
+    const realbutton = document.querySelectorAll(".realbutton");
+    realbutton.forEach((sec) => {
+        sec.addEventListener("click", () => {
+            let unit = sec.innerHTML;
+            unit = unit.split("<br>")[0].toLowerCase();
+            PurchaseUnit(unit);
+        });
+    });
+    (_k = document.getElementById("btnSaveProgress")) === null || _k === void 0 ? void 0 : _k.addEventListener("click", () => {
+        alert("Save Not Done yet!");
+    });
+}
 // Used for manual clicks.  Should probably have a better name.
 function ManualClicks() {
     let clicks = document.getElementById("clicks");
@@ -173,11 +172,13 @@ function UpdateUnitCost(unit) {
                 unitCost = 640 + Math.pow(64 + amountOfUnitsValue, difficultyModifier);
                 break;
             case "spaceships":
-                unitCost = 1280 + Math.pow(128 + amountOfUnitsValue, difficultyModifier);
+                unitCost =
+                    1280 + Math.pow(128 + amountOfUnitsValue, difficultyModifier);
                 break;
         }
         unitCost = Math.floor(unitCost);
-        document.getElementsByClassName(unit + "Cost")[0].innerHTML = unitCost.toString();
+        document.getElementsByClassName(unit + "Cost")[0].innerHTML =
+            unitCost.toString();
     }
 }
 // Need to adjust this to make the autoclicker minus from zombies.
